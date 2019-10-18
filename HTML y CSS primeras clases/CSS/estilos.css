@@ -1,0 +1,135 @@
+
+/*selector universal*/
+/*enlace*/
+a {
+  
+  color: rgb(156, 151, 151); 
+}
+a:hover {
+  color: green;
+}
+
+/*enlace fondo claro*/
+.a_claro {
+  
+  color: rgb(3, 77, 52); 
+}
+.a_claro:hover {
+  color: rgb(81, 114, 95);
+}
+
+
+/*encabezado*/
+header {
+    text-align: center;
+    margin: auto; 
+    background-color: rgb(60, 60, 134);
+  }
+
+
+/*barra de navegación*/
+
+.menu ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: rgb(104, 118, 197);
+  }
+  
+.menu li {
+    float: left;
+  }
+
+  /*cursos disponibles*/
+.cursos_disponibles{
+    padding: 10px;
+    background-color: rgb(195, 191, 206);
+    margin: 0; 
+}
+
+  /*para enlaces del menu y de cursos disponibles*/
+  ul li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    text-emphasis-color: white;
+  }
+  
+li a:hover {
+    background-color: rgb(219, 215, 230);
+    color: blue;
+  }
+
+  /*para ingresar al sistema*/
+.ingresar{
+    padding: 10px;
+    background-color:  rgb(104, 118, 197);
+    margin: 0;
+}
+.ingresar_sistema{
+    padding: 10px;
+    background-color: rgb(195, 191, 206);
+    margin: 0;
+}*/
+.registrarse{ 
+    padding: 10px;
+    background-color: rgb(195, 191, 206);
+    margin: 0;
+}
+
+/*botones*/
+.boton{
+    background-color: rgb(104, 118, 197);
+    border: none;
+    color: white;
+    padding: 10px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    
+  }
+
+/*formularios*/
+.formularios{
+    padding: 10px;
+    background-color: rgb(195, 191, 206);
+    margin: 0;
+}
+
+footer, .barra{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: #28a745;
+    border-color: #28a745;
+    margin-top: 10px;
+    text-align: center;
+}
+
+input{
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 4px;
+}
+
+/*table, th, td {
+    border: 1px solid black;
+    text-align: center;
+  }
+
+  table {
+    width: 100%;
+  }
+  
+  th {
+    height: 50px;
+  }
+  td {
+    height: 200px;
+  }*/
+
+#logo{
+  background-color: #28a745;
+}

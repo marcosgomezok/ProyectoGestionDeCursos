@@ -1,0 +1,85 @@
+.navbar {
+  background-color: #333;
+}
+ul.topnav {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+ul.topnav li {float: left;}
+
+ul.topnav li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+ul.topnav li a:hover:not(.active) {background-color: #111;}
+
+ul.topnav li.right {float: right;}
+
+.logeado{
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+@media screen and (max-width: 600px) {
+  ul.topnav li.right, 
+  ul.topnav li {float: none;}
+}
+
+.barra{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: #28a745;
+    border-color: #28a745;
+    margin-top: 10px;
+    text-align: center;
+}
+html {
+  min-height: 100%;
+  position: relative;
+}
+body {
+  margin: 0;
+  margin-bottom: 55px;
+}
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 50px;
+  padding-top: 10px; 
+  background-color: #28a745;
+  border-color: #28a745;
+  text-align: center;
+}
+
+input{
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 4px;
+}
+#logo{
+  background-color: #28a745;
+}
+
+.tcentrado{
+    text-align:center;
+    vertical-align:middle;
+}
+.login{
+  margin: 60px;
+  text-align:center;
+  vertical-align:middle;
+}
+/*si agregamos dropbox y cambiamos todo el css
+ul.navbar-nav li.nav-item a.nav-link:hover:not(.active) {background-color: #111;}*/

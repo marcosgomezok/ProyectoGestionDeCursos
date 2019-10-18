@@ -1,5 +1,17 @@
-package Cursos
+package cursos
 
 class CursoController {
-    static scaffold = cursos.Curso
+    def cursoService
+
+    def alta() {
+      [curso: new Curso()]
+    }
+
+    def save() {
+      cursoService.altaCurso(params)
+      redirect(controller:"Administrador",action:"inicio")
+    }
+    
+
+
 }
