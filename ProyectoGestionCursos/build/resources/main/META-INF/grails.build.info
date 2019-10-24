@@ -1,6 +1,6 @@
-#Fri, 04 Oct 2019 16:18:05 -0300
+#Wed, 23 Oct 2019 04:48:38 -0300
 
 info.app.version=0.1
-info.app.name=ProyectoGestionCursos
+info.app.name=ProyectoGestionCursosSeguridad2
 grails.env=development
 info.app.grailsVersion=3.3.8

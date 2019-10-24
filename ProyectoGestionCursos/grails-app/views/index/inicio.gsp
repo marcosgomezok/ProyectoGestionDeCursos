@@ -5,7 +5,7 @@
   <title>Inicio</title>
 </head>
 <body>
-  <h3 class="barra">Oferta Disponible:</h3>
+  <h3 class="barra">Ofertas disponibles proximas a realizarse</h3>
     <g:each in="${listado?}">
       <div class="row mb-2">
         <div class="col-md-12">

@@ -1,29 +1,12 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <meta name="layout" content="main"/>
+    <meta name="layout" content="main_admin"/>
     <title>Alta</title>
 </head>
 <body>
-<g:if test="${session!=null && session.user!=null}">
-  <ul class="topnav"> 
-    <li><a class="active" href="/">Inicio</a></li>
-    <li><g:link controller="curso" action="alta">Cargar Curso</g:link></li>
-    <li><g:link controller="administrador" action="admasistencias">Gestionar Asistencias</g:link></li>
-    <li><g:link controller="administrador" action="estadisticas">Gestionar Estadisticas</g:link></li>
-    <li class="right"><g:link controller="usuario" action="logout"><i class="fas fa-sign-out-alt"></i> Cerrar sesión</g:link></li>
-    <li class="right"><label class="usuario logeado" for="usuario-logeado" ><i class="fas fa-user-tie"></i> Administrador: ${session?.user?.usuario}</label></li>    
-  </ul>
-</g:if>
-<g:else>
-  <ul class="topnav">
-    <li><a class="active" href="/">Inicio</a></li>
-    <li class="right"><g:link controller="usuario" action="inicio"><i class="fas fa-sign-in-alt"></i> Acceder</g:link></li>
-    <li class="right"><g:link controller="aspirante" action="alta"><i class="fas fa-user"></i> Registrarse</g:link></li>
-  </ul>
-</g:else>
+<h3 class="barra">Añadir nuevo Evento:</h3>
 <div class="container">
-    <h3>Añadir nuevo Evento:</h3>
         <g:form method="post" action="save">
             <div class="form-group row">
                 <label for="nombre" class="col-sm-2 col-form-label">Nombre del evento</label>
@@ -92,23 +75,28 @@
                     </div>
             </div>
             <div class="row">
-                <legend class="col-form-label col-sm-2 pt-0">Categoría</legend>
+                <legend class="col-form-label col-sm-2 pt-0">Estado: </legend>
                 <div class="col-sm-10">
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="estado" value="Proximo" checked>
+                        <input class="form-check-input" type="radio" name="estado" value="Baja">
                         <label class="form-check-label">
-                        Proximo
+                        Baja
                         </label>
+                        <br>
+                        <input class="form-check-input" type="radio" name="estado" value="Activo" checked>
+                        <label class="form-check-label">
+                        Activo
+                        </label>
+                        <br>
+                        <input class="form-check-input" type="radio" name="estado" value="Finalizado">
+                        <label class="form-check-label">
+                        Finalizado
+                        </label>
+                        <br>
                     </div>
                 </div>
+
             </div>                            
-            <div class="form-group row">
-                <legend>Autoridades Certificantes</legend> 
-            </div>
-            <div class="form-group row">
-                <legend>Expositores</legend> 
-            </div>               
-            <div class="form-group row">
                 <div class="col-sm-10">
                     <button type="submit" class="btn btn-success">Aceptar</button>
                     <g:link controller="administrador" action="inicio" class="btn btn-success">Cancelar</g:link>

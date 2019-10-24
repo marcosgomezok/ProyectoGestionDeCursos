@@ -1,10 +1,10 @@
 package cursos
 
 class IndexController {
-    def indexService
+    def cursoService
 
     def inicio() {
       session.user=null
-      [listado: indexService.listadoCursos()]
+      [listado: cursoService.listadoProximosCursos()]
     }
 }

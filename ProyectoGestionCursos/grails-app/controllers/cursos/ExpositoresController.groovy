@@ -5,95 +5,47 @@ import static org.springframework.http.HttpStatus.*
 
 class ExpositoresController {
 
-    ExpositoresService expositoresService
+    def expositoresService
 
-    static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
-
-    def index(Integer max) {
-        params.max = Math.min(max ?: 10, 100)
-        respond expositoresService.list(params), model:[expositoresCount: expositoresService.count()]
+    def altaExpositor(){
+      [expositores: new Expositores()]
     }
 
-    def show(Long id) {
-        respond expositoresService.get(id)
+    def guardarExpositor(){
+      expositoresService.altaExpositor(params)
+      redirect(controller:"expositores",action:"listadoExpositores")
     }
 
-    def create() {
-        respond new Expositores(params)
+    def listadoExpositores(){
+      [expositores: expositoresService.listadoExpositores()]
+    }
+    
+    def asignarCurso(){
+      [expositor: Expositores.get(params.id)]
+      [listado: expositoresService.listadoCursos()]
+      [expositor:expositor, listado:listado]
     }
 
-    def save(Expositores expositores) {
-        if (expositores == null) {
-            notFound()
-            return
-        }
-
-        try {
-            expositoresService.save(expositores)
-        } catch (ValidationException e) {
-            respond expositores.errors, view:'create'
-            return
-        }
-
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'expositores.label', default: 'Expositores'), expositores.id])
-                redirect expositores
-            }
-            '*' { respond expositores, [status: CREATED] }
-        }
+    //añaden expositor al seleccionar un curso
+    def save() {
+      
+      def curso = Curso.get(params.id)
+      def expositor = new Expositores(params)
+      expositor.addToCursos(curso)
+      curso.addToExp(expositor)
+      curso.save(flush: true)
+      expositor.save(flush:true)
+      [curso: Curso.get(params.id)]
+      [expositor: Expositores.get(params.id)]
+      [expositor:expositor]
+      //[curso:curso]
+      //redirect(controller:"Curso",action:"curso_cargado")
     }
-
-    def edit(Long id) {
-        respond expositoresService.get(id)
+    
+    def aniadirExpositor(){
+      [expositores: new Expositores()]
+      [curso: Curso.get(params.id)]
+      
     }
-
-    def update(Expositores expositores) {
-        if (expositores == null) {
-            notFound()
-            return
-        }
-
-        try {
-            expositoresService.save(expositores)
-        } catch (ValidationException e) {
-            respond expositores.errors, view:'edit'
-            return
-        }
-
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.updated.message', args: [message(code: 'expositores.label', default: 'Expositores'), expositores.id])
-                redirect expositores
-            }
-            '*'{ respond expositores, [status: OK] }
-        }
-    }
-
-    def delete(Long id) {
-        if (id == null) {
-            notFound()
-            return
-        }
-
-        expositoresService.delete(id)
-
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.deleted.message', args: [message(code: 'expositores.label', default: 'Expositores'), id])
-                redirect action:"index", method:"GET"
-            }
-            '*'{ render status: NO_CONTENT }
-        }
-    }
-
-    protected void notFound() {
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.not.found.message', args: [message(code: 'expositores.label', default: 'Expositores'), params.id])
-                redirect action: "index", method: "GET"
-            }
-            '*'{ render status: NOT_FOUND }
-        }
-    }
+    
 }

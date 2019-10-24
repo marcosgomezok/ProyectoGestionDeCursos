@@ -1,27 +1,37 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <meta name="layout" content="main"/>
+    <meta name="layout" content="main_admin"/>
     <title>Estadisticas</title>
 </head>
 <body>
-<g:if test="${session!=null && session.user!=null}">
-  <ul class="topnav"> 
-    <li><a class="active" href="/">Inicio</a></li>
-    <li><g:link controller="curso" action="alta">Cargar Curso</g:link></li>
-    <li><g:link controller="administrador" action="admasistencias">Gestionar Asistencias</g:link></li>
-    <li><g:link controller="administrador" action="estadisticas">Gestionar Estadisticas</g:link></li>
-    <li class="right"><g:link controller="usuario" action="logout"><i class="fas fa-sign-out-alt"></i> Cerrar sesión</g:link></li>
-    <li class="right"><label class="usuario logeado" for="usuario-logeado" ><i class="fas fa-user-tie"></i> Administrador: ${session?.user?.usuario}</label></li>    
-  </ul>
-</g:if>
-<g:else>
-  <ul class="topnav">
-    <li><a class="active" href="/">Inicio</a></li>
-    <li class="right"><g:link controller="usuario" action="inicio"><i class="fas fa-sign-in-alt"></i> Acceder</g:link></li>
-    <li class="right"><g:link controller="aspirante" action="alta"><i class="fas fa-user"></i> Registrarse</g:link></li>
-  </ul>
-</g:else>
+<div class="estadisticas">
+<div class="container">
+    <div class="row mb-2">
+        <div class="col-md-3"></div>
+            <div class="col-md-6">
+              <table>
+                <tr>
+                  <th>Estadisticas</th>
+                </tr>
+                <tr>
+                  <td><g:link controller="Estadisticas" action="inscriptosxCurso">Listado de inscriptos por cursos</g:link></td>
+                </tr>
+                <tr>
+                  <td><g:link controller="Estadisticas" action="pagoInscriptos">Listados de inscriptos que efectuaron el pago/inscriptos que falta realizar el pago</g:link></td>
+                </tr>
+                <tr>
+                  <td><g:link controller="Estadisticas" action="cursosxFecha">Cursos realizados en una fecha determinada</g:link></td>
+                </tr>
+              </table>
+            </div>
+        <div class="col-md-3"></div>
+    </div>        
+</div>
+</div>
+  <div class="estadisticas">
+    <g:link controller="Administrador" action="inicio" class="btn btn-success">Volver</g:link>
+  </div>
 </body>
 </html>
 

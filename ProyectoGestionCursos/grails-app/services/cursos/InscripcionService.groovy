@@ -1,18 +1,15 @@
 package cursos
 
-import grails.gorm.services.Service
+import grails.gorm.transactions.Transactional
 
-@Service(Inscripcion)
-interface InscripcionService {
+@Transactional
+class InscripcionService {
 
-    Inscripcion get(Serializable id)
+    List listadoInscriptosS() {
+      def inscriptos = Aspirante.findAll()
+      return inscriptos
+  }
 
-    List<Inscripcion> list(Map args)
-
-    Long count()
-
-    void delete(Serializable id)
-
-    Inscripcion save(Inscripcion inscripcion)
+   
 
 }

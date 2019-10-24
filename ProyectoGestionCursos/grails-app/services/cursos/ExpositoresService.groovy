@@ -1,18 +1,35 @@
 package cursos
 
-import grails.gorm.services.Service
+import grails.gorm.transactions.Transactional
 
-@Service(Expositores)
-interface ExpositoresService {
+@Transactional
+class ExpositoresService {
 
-    Expositores get(Serializable id)
+  void altaExpositor(Map params) {
+    def expositor = new Expositores(params).save(flush:true)
+  }
+  
+  List listadoExpositores() {
+    def expositor = Expositores.findAll()
+      return expositor
+  }
 
-    List<Expositores> list(Map args)
-
-    Long count()
-
-    void delete(Serializable id)
-
-    Expositores save(Expositores expositores)
+  List listadoCursos() {
+    def cursos = Curso.findAll()
+      return cursos
+  }
+  /*void altaExpositor(Map params) {
+    def curso = Curso.get(params.id)
+    def expositor = new Expositores(params).save(flush:true)
+    curso.addToExp(expositor)
+    curso.save(flush: true)
+  }
+  List listadoCursos() {
+    def cursos = Curso.findAll()
+      return cursos
+  }
+  List buscarCurso(int id) {
+          return Curso.findAllById(params.id)
+    }*/
 
 }

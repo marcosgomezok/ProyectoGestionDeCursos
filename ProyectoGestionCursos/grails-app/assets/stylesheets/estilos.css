@@ -81,5 +81,34 @@ input{
   text-align:center;
   vertical-align:middle;
 }
+.estadisticas{
+  margin: 60px;
+  text-align:center;
+  vertical-align:middle;
+}
+.tablainsestadisticas{
+  margin: 60px;
+
+  vertical-align:middle;
+}
+.tablainsestadisticas tr:nth-child(even) {
+  background-color: #dddddd;
+}
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: middle;
+  padding: 8px;
+}
+#fecha_hasta_cf, #fecha_desde_cf{
+  text-align: right;
+}
+
+
 /*si agregamos dropbox y cambiamos todo el css
 ul.navbar-nav li.nav-item a.nav-link:hover:not(.active) {background-color: #111;}*/

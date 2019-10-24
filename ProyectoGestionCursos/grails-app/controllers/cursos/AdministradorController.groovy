@@ -4,7 +4,7 @@ class AdministradorController {
     def administradorService
 
     def inicio() {
-      render(view:"inicio")
+      [listado: administradorService.listadoCursos()]
     }
     def admasistencias(){
 

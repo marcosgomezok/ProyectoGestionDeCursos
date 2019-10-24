@@ -14,7 +14,6 @@ class Curso {
     int costo
     String estado
     static hasMany =[aut: AutoridadCertificante, exp: Expositores, ins: Inscripcion]
-    static belongsTo = [aut: AutoridadCertificante, exp: Expositores, ins: Inscripcion]
 
     static constraints = {
         nombre(blank: false, maxSize:100)
@@ -38,6 +37,6 @@ class Curso {
         cupo_maximo(max: 99999999,validator: { val, Curso obj ->
         if (val< obj.cupo_minimo) {return ["Cupo Maximo no puede ser menor a Cupo Minimo"]}
         })
-        estado(inList: ['Activo','Finalizado','Proximo'])
+        estado(inList: ['Activo','Finalizado','Baja'])
     }
 }

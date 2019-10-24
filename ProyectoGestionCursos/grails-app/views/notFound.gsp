@@ -1,14 +1,14 @@
 <!doctype html>
 <html>
     <head>
-        <title>Page Not Found</title>
+        <title>Pagina no encontrada</title>
         <meta name="layout" content="main">
-        <g:if env="development"><asset:stylesheet src="errors.css"/></g:if>
     </head>
     <body>
-        <ul class="errors">
-            <li>Error: Page Not Found (404)</li>
-            <li>Path: ${request.forwardURI}</li>
-        </ul>
+        <div class="container-fluid">
+        <div id="logo" class="row justify-content-center">
+                    <asset:image src="error404.png" absolute="true"/>                      
+        </div>
+    </div>
     </body>
 </html>

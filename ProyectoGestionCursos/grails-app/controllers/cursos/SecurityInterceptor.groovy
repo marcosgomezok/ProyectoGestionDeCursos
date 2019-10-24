@@ -12,9 +12,9 @@ class SecurityInterceptor {
   SecurityInterceptor() {
       match(controller:"aspirante", action:"inicio")
       match(controller:"aspirante", action:"inscripcion")
-      match(controller:"aspirante", action:"cuponPago")
+      match(controller:"aspirante", action:"cupon")
       match(controller:"aspirante", action:"miscursos")
-      match(controller:"aspirante", action:"certificados")
+      match(controller:"aspirante", action:"miscertificados")
       match(controller:"administrador", action:"inicio")
       match(controller:"curso", action:"alta")
       match(controller:"administrador", action:"admasistencias")
@@ -26,7 +26,7 @@ class SecurityInterceptor {
           redirect(controller: "usuario", action: "inicio")
           return false
         }
-        if(controllerName=='aspirante' && (actionName=='cuponPago' || actionName=='miscursos' || actionName=='certificados' || actionName=='inscripcion'|| actionName=='inicio')) {
+        if(controllerName=='aspirante' && (actionName=='cupon' || actionName=='miscursos' || actionName=='miscertificados' || actionName=='inscripcion'|| actionName=='inicio')) {
             if(session.user instanceof Administrador){
                 redirect(controller:"administrador", action: "inicio")
                  return false   
