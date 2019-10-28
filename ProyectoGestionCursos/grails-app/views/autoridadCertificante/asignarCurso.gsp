@@ -1,12 +1,14 @@
-<!doctype html>
 <html lang="en">
 <head>
     <meta name="layout" content="main_admin"/>
     <title>Listado de Cursos</title>
 </head>
-<body>
+<body><!doctype html>
+
 <h3 class="barra">Listado de Cursos</h3>  
 <div class="container"> 
+<div class="mb-1 text-muted">Autoridad Certificante: ${autoridad.apellido} ${autoridad.nombre}</div>
+<div class="mb-1 text-muted"></div>
   
 <g:each in="${listado?}">
 <div class="row mb-2">
@@ -16,19 +18,15 @@
                   <h3 class="mb-0">${it.nombre}</h3>
                   <div class="mb-1 text-muted">Fecha de inicio: <g:formatDate format="dd/MM/yyyy" date="${it.fecha_desde}"/></div>
                   <div class="mb-1 text-muted">Fecha de finalizacion: <g:formatDate format="dd/MM/yyyy" date="${it.fecha_hasta}"/></div>
-                  <div class="mb-1 text-muted"> Estado: ${it.estado}</div>
                   
-                  <g:form controller="curso" action="modificar_curso" method="POST">
+                  
+                  <g:form controller="autoridadCertificante" action="guardarCursoAutoridad" method="POST">
                     <g:hiddenField name="id" value="${it.id}" />
-                    <button type="submit" class="btn btn-success">Modificar</button>
+                    <g:hiddenField name="id_aut" value="${autoridad.id}" />
+                    <button type="submit" class="btn btn-success">Asignar Curso</button>
                     
                   </g:form>
                   <br>
-                  <g:form controller="curso" action="muestraCursoEliminar" method="POST">
-                    <g:hiddenField name="id" value="${it.id}" />
-                    <button type="submit" class="btn btn-success">Eliminar</button>
-                    
-                  </g:form>
                   
                   
                 </div>                

@@ -2,16 +2,18 @@
 <html lang="en">
 <head>
     <meta name="layout" content="main_aspirante"/>
-    <title>Inicio</title>
+    <title>Mis cursos</title>
 </head>
 <body>
-<div class="tcentrado">
-  <h1>Estas inscripto en los siguientes cursos</h1>
+<div class="centrar">
+  <g:if test="${miscursos}">
+  <h3 class="barra">Estas inscripto en los siguientes cursos</h3>
   <div class="container">
     <g:each in="${miscursos?}">
-      <div class="row mb-2">
+    <div class="submenucentradocurso">
+      <div class="row">
         <div class="col-md-12">
-          <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+          <div class="row no-gutters border rounded overflow-hidden flex-md-row shadow-sm h-md-250 position-relative">
             <div class="col p-4 d-flex flex-column position-static">
                   <h3 class="mb-0">Nombre: <label id="curso">${it.curso.nombre}</label></h3>
                   <div class="mb-1 text-muted">Fecha de inicio: <g:formatDate format="dd/MM/yyyy" date="${it.curso.fecha_desde}"/></div>
@@ -21,15 +23,22 @@
                   <div class="mb-1 text-muted">Horarios: ${it.curso.horarios}</div>
                   <div class="mb-1 text-muted">Fecha de certificacion: <g:formatDate format="dd/MM/yyyy" date="${it.curso.fechadel_certificado}"/></div>
                   <div class="mb-1 text-muted">Costo: $${it.curso.costo}</div>
-                  <div class="mb-1 text-muted">Estado del curso: ${it.curso.estado}</div>
                   <div class="mb-1 text-muted">Tipo de inscripcion: ${it.tipoInscrip}</div>
-                  <div class="mb-1 text-muted">Pago: ${it.pago}</div>
+                  <div class="mb-1 text-muted">Pago: ${it.cupon.pago}</div>
                   <div class="mb-1 text-muted">Nro. inscripcion: ${it.id}</div>
             </div>                
           </div>
         </div>
       </div>
+    </div>
     </g:each>
+  </g:if>   
+  <g:else>
+    <div class="m-3"><h3>No estas inscripto en ningun curso</h3></div>      
+  </g:else>
+    <div class="submenucentradocurso">
+      <g:link controller="aspirante" action="inicio" class="btn btn-success">Volver</g:link>
+    </div>
   </div>
 </div>
 </body>

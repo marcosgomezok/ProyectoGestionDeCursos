@@ -41,22 +41,25 @@ ul.topnav li.right {float: right;}
     padding-bottom: 10px;
     background-color: #28a745;
     border-color: #28a745;
-    margin-top: 10px;
     text-align: center;
 }
+
 html {
   min-height: 100%;
   position: relative;
 }
+
 body {
   margin: 0;
-  margin-bottom: 55px;
+  margin-bottom: 70px;
 }
+
 footer {
   position: absolute;
   bottom: 0;
   width: 100%;
   height: 50px;
+  margin-top: 20px; 
   padding-top: 10px; 
   background-color: #28a745;
   border-color: #28a745;
@@ -64,38 +67,41 @@ footer {
 }
 
 input{
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    padding: 4px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 4px;
 }
+
 #logo{
   background-color: #28a745;
 }
 
-.tcentrado{
-    text-align:center;
-    vertical-align:middle;
+#img404{
+  margin-top:30px;
+  height: 500px;
 }
-.login{
-  margin: 60px;
-  text-align:center;
-  vertical-align:middle;
-}
-.estadisticas{
-  margin: 60px;
-  text-align:center;
-  vertical-align:middle;
-}
-.tablainsestadisticas{
-  margin: 60px;
 
+div#logo img{
+  width: 1349px; 
+  height: 131px;
+}
+.menucentrado{
+  margin: 100px;
+  text-align:center;
   vertical-align:middle;
 }
-.tablainsestadisticas tr:nth-child(even) {
-  background-color: #dddddd;
+.menucentradocurso{
+  margin: 60px;
+  text-align:center;
+  vertical-align:middle;
 }
+.submenucentradocurso{
+  margin-top: 20px;
+  text-align:center;
+  vertical-align:middle;
+}
+
 table {
-  font-family: arial, sans-serif;
   border-collapse: collapse;
   width: 100%;
 }
@@ -105,10 +111,42 @@ td, th {
   text-align: middle;
   padding: 8px;
 }
+
+.tabla_nth_child{
+  margin-bottom: 20px;
+  vertical-align:middle;
+}
+
+.tabla_nth_child tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+.centrar{
+  text-align:center;
+  vertical-align:middle;
+}
+
+.margenseparadorlayout{
+  margin: 60px;
+}
+
 #fecha_hasta_cf, #fecha_desde_cf{
   text-align: right;
 }
 
+.linkButton { 
+  background: none;
+  border: none;
+  color: #0066ff;
+  cursor: pointer; 
+}
 
-/*si agregamos dropbox y cambiamos todo el css
-ul.navbar-nav li.nav-item a.nav-link:hover:not(.active) {background-color: #111;}*/
+.linkButton:hover{ 
+  text-decoration: underline;
+}
+
+.margenseparadorlayouttop{
+  margin-top: 60px;
+}
+
+

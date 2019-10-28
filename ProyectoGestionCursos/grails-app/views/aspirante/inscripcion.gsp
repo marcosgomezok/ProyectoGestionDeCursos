@@ -5,10 +5,12 @@
     <title>Inscripcion</title>
 </head>
 <body>
-<div class="container">
+<div class="centrar">
   <g:if test="${curso!=null}">
-    <h3 class="barra">Inscripcion al Evento:</h3>  
-      <div class="row mb-2">
+  <h3 class="barra">Inscripcion al Evento:</h3> 
+    <div class="container">    
+      <div class="menucentradocurso">
+        <div class="row">
         <div class="col-md-12">
           <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
             <div class="col p-4 d-flex flex-column position-static">
@@ -23,24 +25,17 @@
             </div>                
           </div>
         </div>
+        </div>
       </div>
     <g:form method="post" action="cupon">           
       <g:hiddenField name="id" value="${curso.id}"/>
-        <div class="form-group row">
-          <div class="col-sm-10">
-            <button type="submit" class="btn btn-success">Confirmar inscripcion</button>
-              <g:link controller="aspirante" action="inicio" class="btn btn-success">Cancelar</g:link>
-          </div>                   
-        </div>
+          <button type="submit" class="btn btn-success">Confirmar inscripcion</button>
+            <g:link controller="aspirante" action="inicio" class="btn btn-success">Cancelar</g:link>                 
     </g:form>
   </g:if>
   <g:else>
-    <div class="tcentrado">
-      <div class="container">
-        <h6>Ya estas inscripto en este curso<h6>
-          <g:link controller="aspirante" action="inicio" class="btn btn-success">Volver</g:link>
-      </div>
-    </div>
+      <div class="m-3"><h3>Ya estas inscripto en este curso</h3></div>
+        <g:link controller="aspirante" action="inicio" class="btn btn-success">Volver</g:link>
   </g:else>
 </div>
 </body>

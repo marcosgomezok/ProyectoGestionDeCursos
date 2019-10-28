@@ -2,21 +2,21 @@
 <html lang="en">
 <head>
     <meta name="layout" content="main_aspirante"/>
-    <asset:javascript src="validarCampos.js"/>
     <title>Cupon</title>
 </head>
 <body>
-<div class="tcentrado">
+<div class="centrar">
 <g:if test="${cupon.tipoInscrip=="Inscripto"}">
-  <h6>Para concretar la inscripcion, acercarse por seccion alumno y entregar el siguiente cupon de pago<h6>
+  <h6 class="mt-3">Para concretar la inscripcion, acercarse por seccion alumno y entregar el siguiente cupon de pago<h6>
 </g:if>
 <g:else>
-  <h6>Se ha cubierto el cupo maximo de inscripcion, pero eres un Postulante<h6>
+  <h6 class="mt-3">Se ha cubierto el cupo maximo de inscripcion, pero eres un Postulante<h6>
 </g:else>
     <div class="container">
-      <div class="row mb-2">
+    <div class="menucentradocurso">
+      <div class="row">
         <div class="col-md-12">
-          <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+          <div class="row no-gutters border rounded overflow-hidden flex-md-row shadow-sm h-md-250 position-relative">
             <div class="col p-4 d-flex flex-column position-static">
               <g:if test="${cupon.tipoInscrip=="Inscripto"}">
               <h3 class="mb-1">Tu Cupon</h3>
@@ -33,10 +33,10 @@
             </div>                
           </div>
         </div>
-      </div>
-      <g:link controller="aspirante" action="inicio" class="btn btn-success">Aceptar</g:link>
+      </div>    
+    </div>
+    <g:link controller="aspirante" action="inicio" class="btn btn-success">Aceptar</g:link>
     </div>
 </div>
-<script>(function () {corchetescuponpago()} )();</script>
 </body>
 </html>

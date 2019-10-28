@@ -1,82 +1,74 @@
 package cursos
+import grails.rest.RestfulController
 
-class CursoController {
+class CursoController extends RestfulController<Curso>{
+  static responseFormats = ['json', 'xml']
     def cursoService
+    def autoridadCertificanteService
+    def expositoresService
+    def inscripcionService
 
-    //muestra los cursos para modificar
-    def muestraCursosModificar() {
-      [listado: cursoService.listadoCursos()]
-      //redirect(controller:"Curso",action:"modificar_curso")
-    }
-    
-    //muestra los datos del curso a modificar
-    def modificar_curso(){
-      [curso: Curso.get(params.id)]
-    }
-    
-    //guarda datos modificados del curso en la vista modificar_curso
-    def guardarCursoModificado(){
-      def c= Curso.get(params.id)
-      c.nombre = params.nombre
-      c.fecha_desde = Date.parse('dd/MM/yyyy', params.fecha_desde)
-      c.fecha_hasta = Date.parse('dd/MM/yyyy', params.fecha_hasta)
-      c.cantidad_horas = Integer.parseInt(params.cantidad_horas)
-      c.lugar = params.lugar
-      c.horarios = params.horarios
-      c.fecha_lim_inscrip = Date.parse('dd/MM/yyyy', params.fecha_lim_inscrip)
-      c.fechadel_certificado = Date.parse('dd/MM/yyyy', params.fechadel_certificado)
-      c.cupo_minimo = Integer.parseInt(params.cupo_minimo)
-      c.cupo_maximo = Integer.parseInt(params.cupo_maximo)
-      c.costo = Integer.parseInt(params.costo)
-      c.estado = params.estado
-      c.save(flush:true)
-      //cursoService.modificar(params.id)
-      render(controller:"Curso",view:"muestraCursosModificar")
+    CursoController() {
+      super(Curso)
     }
 
-    //muestra la lista de cursos cargados en la vista curso_cargado
-    def curso_cargado() {
-      [listado: cursoService.listadoCursos()]
+    def inicio(){
+      render(view:"inicio")
     }
 
-    def alta() {
-      [curso: new Curso()]
+    def alta() {   
+      def expositores = expositoresService.listadoExpositores()
+      def autoridades = autoridadCertificanteService.listadoAutoridades() 
+      render(view: "alta", model: [curso: new Curso(), expositores: expositores, autoridades: autoridades])
     }
 
     def save() {
-      //quiza sea este el error
-      def curso = new Curso(params)
+      if(params==null){   
+        redirect(controller:"Administrador",action:"inicio")
+      }
+      else{
       cursoService.altaCurso(params)
-      //redirect(controller:"Curso",action:"muestraCursoCargado")
-      [curso:curso]
-      //redirect(controller:"curso",action:"save")
+      redirect(controller:"Administrador",action:"inicio")
+      }
+    }
+
+    def listadoCursos(){
+      [cursos: cursoService.listadoCursos()]
     }
     
-    def muestraCursoCargado(){
-      def curso = new Curso(params)
-      [curso:curso]
+    def baja(){
+      [cursos: cursoService.listadoCursos()]
     }
-    
-    //muestra el curso a eliminar
+
     def muestraCursoEliminar(){
-      [curso: Curso.get(params.id)]
+      def curso = cursoService.cursoxId(params)
+      def inscripciones = inscripcionService.inscripcionesxCurso(curso)
+      [curso:curso, inscripciones: inscripciones]
+    }
+
+    def confirmarBaja(){
+      cursoService.bajaCurso(params)
+      render(controller:"Administrador",view:"inicio")
     }
     
-    //eliminar curso
-    def eliminar_curso(){
-      def curso = Curso.get(params.id)
-      curso.delete(flush:true)
-      redirect(controller:"administrador",view:"inicio")
+    def modificar(){
+      [cursos: cursoService.listadoCursos()]
     }
 
-    //prueba agregar expositor
-    def create(){
-      [curso: Curso.get(params.id)]
+    def seleccionarModify(){
+      def curso = cursoService.cursoxId(params)
+      def expositores = expositoresService.listadoExpositoresSincurso(curso)
+      def autoridades = autoridadCertificanteService.listadoAutoridadesSincurso(curso) 
+      [curso: curso, expositores: expositores, autoridades: autoridades]
     }
-    
 
+    def confirmarModify(){
+      cursoService.modifyCurso(params)
+      render(controller:"Administrador",view:"inicio")
+    }
 
-
-
+    def listadoCursosJSON(){
+      respond cursoService.listadoCursos()
+    }
 }
 

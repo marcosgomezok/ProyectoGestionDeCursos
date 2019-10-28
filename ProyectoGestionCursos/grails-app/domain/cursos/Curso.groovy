@@ -1,5 +1,7 @@
 package cursos
+import grails.rest.Resource
 
+@Resource(uri='/cursos')
 class Curso {
     String nombre
     Date fecha_desde
@@ -12,7 +14,6 @@ class Curso {
     int cupo_minimo
     int cupo_maximo
     int costo
-    String estado
     static hasMany =[aut: AutoridadCertificante, exp: Expositores, ins: Inscripcion]
 
     static constraints = {
@@ -37,6 +38,5 @@ class Curso {
         cupo_maximo(max: 99999999,validator: { val, Curso obj ->
         if (val< obj.cupo_minimo) {return ["Cupo Maximo no puede ser menor a Cupo Minimo"]}
         })
-        estado(inList: ['Activo','Finalizado','Baja'])
     }
 }

@@ -1,18 +1,18 @@
 package cursos
 
 class UsuarioController {
-
     def usuarioService
+
     def inicio() {
       session.user=null
       render(view:"inicio")
     }
     
     def login() {
-      if (request.get) {
-      return redirect(controller: "usuario", view: 'inicio')
+      if (params==null) {
+      redirect(controller: "Usuario", view: 'inicio')
       }
-      def u = Usuario.findByUsuario(params.usuario)
+      def u = usuarioService.usuarioxUser(params.usuario)
       if (u) {
         if (u.password == params.password) {
         session.user = u
@@ -33,7 +33,8 @@ class UsuarioController {
       flash.message = "Usuario no encontrado"
       }
     }
-      def logout() {
+
+    def logout() {
       session.user=null
       redirect(controller:"usuario", action: "inicio")
     }

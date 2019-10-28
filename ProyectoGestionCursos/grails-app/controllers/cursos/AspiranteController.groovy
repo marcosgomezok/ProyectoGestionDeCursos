@@ -3,28 +3,61 @@ package cursos
 class AspiranteController {
     def aspiranteService
     def cursoService
+    def inscripcionService
 
     def inicio() {
       [listado: cursoService.listadoCursos()]
     }
 
     def alta() {
+      session.user = null
       [aspirante: new Aspirante()]
     }
 
     def save() {
+      if(params.dni==null){   
+        redirect(controller:"Usuario",action:"inicio")
+      }
+      else{
       aspiranteService.altaAspirante(params)
       redirect(controller:"Usuario",action:"inicio")
+      }
     }
+
+    def cuenta(){
+      [asp: aspiranteService.aspirantexId(session.user.id)]
+    }
+
+    def modify(){
+      if(params.dni==null){   
+        redirect(controller:"Aspirante",action:"inicio")
+      }
+      else{
+      def u = aspiranteService.modifyAspirante(params, session.user.id)
+      session.user = u
+      redirect(controller:"Aspirante",action:"inicio")
+      }
+    }   
+
+    def miscursos(){
+      [miscursos: aspiranteService.aspiranteCursos(session.user.id)]
+    }
+
+    def miscertificados(){
+      [miscertif: aspiranteService.aspiranteCertificados(session.user.id)]
+    } 
+
+    def miscupones(){
+      [miscupones: aspiranteService.aspiranteCupones(session.user.id)]
+    } 
 
     def inscripcion(){
       if(params.id==null){   
         redirect(controller:"Aspirante",action:"inicio")
       }
       else{
-        def curso = Curso.get(params.id)
-        def asp = Aspirante.get(session.user.id)
-        def inscriptos = Inscripcion.findAllByCursoAndAsp(curso,asp)
+        def curso = cursoService.cursoxId(params)
+        def inscriptos = inscripcionService.verificarInscripcion(curso,session.user.id)
         if(inscriptos.size() == 0){
           render(view: "inscripcion", model: [curso: curso])
         }
@@ -39,40 +72,7 @@ class AspiranteController {
       redirect(controller:"Aspirante",action:"inicio")
       }
     else{
-      def curso = Curso.get(params.id)
-      def aspirante = Aspirante.get(session.user.id)
-      def inscriptos = Inscripcion.findAllByCursoAndTipoInscrip(curso,"Inscripto")
-      def certifi = new Certificado(tipoCertif: null)
-      def inscrip
-      if(curso.cupo_maximo>inscriptos.size()){
-        inscrip = new Inscripcion(tipoInscrip: "Inscripto", pago: "Pendiente", certif: certifi, curso: curso, asp: aspirante).save(flush: true)
-        }
-      else{
-        inscrip = new Inscripcion(tipoInscrip: "Postulante", pago: "Pendiente", certif: certifi, curso: curso, asp: aspirante).save(flush: true)
-      }
-        aspirante.addToIns(inscrip)
-        curso.addToIns(inscrip)
-        curso.save(flush: true)
-        aspirante.save(flush: true)
-        render(view: "cupon", model: [cupon:  Inscripcion.get(inscrip.id)])
+      [cupon:  inscripcionService.altaInscripcion(params,session.user.id)]
     }
-    } 
-
-    def miscursos(){
-      def asp = Aspirante.get(session.user.id)
-      def miscursos = Inscripcion.findAllByAsp(asp)
-      render(view: "miscursos", model: [miscursos:  miscursos])
     }
-
-    def miscertificados(){
-      def miscertif = Inscripcion.withCriteria() {           
-        asp {
-            eq("id", session.user.id)
-        }
-        certif{
-          isNotNull("tipoCertif")
-        }
-        }
-      render(view: "miscertificados", model: [miscertif:  miscertif])
-    }   
 }

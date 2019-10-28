@@ -1,35 +1,44 @@
-<!doctype html>
 <html lang="en">
 <head>
     <meta name="layout" content="main_admin"/>
-    <title>Listado de Cursos Cargados</title>
+    <title>Listado de Cursos</title>
 </head>
-<body>
-<h3 class="barra">Listado de Cursos Cargados</h3>  
+<body><!doctype html>
+
+<h3 class="barra">Listado de Cursos</h3>  
 <div class="container"> 
-  
-<g:each in="${listado?}">
+<div ><h3>Expositor:  ${expositor.nombre} ${expositor.apellido}</h3></div>
+<br>
+ <g:if test="${expositor?.cursos}"> 
+ <h4>Cursos:</h4>
+<g:each in="${expositor?.cursos.toList()}">
 <div class="row mb-2">
             <div class="col-md-12">
               <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
                 <div class="col p-4 d-flex flex-column position-static">
-                  <h3 class="mb-0">${it.nombre}</h3>
-                  <div class="mb-1 text-muted">Fecha de inicio: <g:formatDate format="dd/MM/yyyy" date="${it.fecha_desde}"/></div>
+                  <div class="form-group row">
+                            <div class="col-sm-10">
+                            <input type="text" class="form-control" id="curso" name="curso" value="${it.nombre}" disabled>
+                     </div>
                   
-                  <!--MANDO AL CONTROLLER DE EXPOSITORES
-                  def aniadirExpositor(){
-                    [curso:  Curso.get(params.id)]
-                  }-->
-                  <g:form controller="Expositores" action="aniadirExpositor" method="POST">
+                  <g:form controller="expositores" action="confirmarQuitar" method="POST">
                     <g:hiddenField name="id" value="${it.id}" />
-                    <button type="submit" class="btn btn-success">Añadir Expositor</button>
-                    <button type="submit" class="btn btn-success">Añadir Autoridad Certificante</button>
+                    <g:hiddenField name="id_exp" value="${expositor.id}" />
+                    <button type="submit" class="btn btn-success">Quitar</button>
+                    
                   </g:form>
+                  <br>
+                  
+                  </div>
                 </div>                
               </div>
             </div>
     </div>
 </g:each>
+</g:if> 
+  <g:else>
+        <div class="mb-0"><h3>No tiene cursos asignados</h3></div>
+  </g:else>
 </div>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>

@@ -5,7 +5,7 @@ class Usuario extends Persona{
     String password
 
     static constraints = {
-        usuario(blank: false, maxSize:100)
+        usuario(blank: false, maxSize:100,unique: true)
         password(blank: false, maxSize:100)
     }
 }

@@ -16,7 +16,7 @@
 <body>
     <div class="container-fluid">
         <div id="logo" class="row justify-content-center">
-                    <img src="http://tecno.unca.edu.ar/wp-content/uploads/2017/05/18575422_10211412467781016_1446490516_o.jpg">                       
+                    <img src="http://tecno.unca.edu.ar/wp-content/uploads/2017/05/18575422_10211412467781016_1446490516_o.jpg" ">                       
         </div>
     </div>
     <g:if test="${session!=null && session.user!=null}">

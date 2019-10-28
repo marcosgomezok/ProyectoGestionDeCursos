@@ -5,8 +5,9 @@
     <title>Estadisticas</title>
 </head>
 <body>
-<div class="tablainsestadisticas">
+<div class="margenseparadorlayout">
     <div class="container-fluid">
+        <div class="centrar mb-3"><h3>Listado de cursos realizados en una fecha determinada</h3></div>
         <g:form method="post" action="cursosxFecha">
             <div class="form-group row">
                 <label for="fecha_desde_cf" id="fecha_desde_cf"class="col-sm-2 col-form-label">Fecha inicio</label>
@@ -20,7 +21,8 @@
                     <div class="col-sm-1"><button type="submit" class="btn btn-success">Buscar</button></div>
             </div>        
         </g:form>
-        <g:if test="${listado!=null}">
+        <div class="tabla_nth_child">
+        <g:if test="${cursos}">
         <table>
             <tr>
                 <th>Nombre</th>
@@ -34,9 +36,8 @@
                 <th>Cupo minimo</th>
                 <th>Cupo maximo</th>
                 <th>Costo</th>
-                <th>Estado</th>
             </tr>
-            <g:each in="${listado?}">
+            <g:each in="${cursos?}">
             <tr>
                 <td><div><label id="nombre">${it.nombre} </label> </div></td>
                 <td><div><label id="fd"><g:formatDate format="dd/MM/yyyy" date="${it.fecha_desde}"/></label> </div></td>
@@ -49,13 +50,13 @@
                 <td><div><label id="cupo_minimo">${it.cupo_minimo} </label> </div></td>
                 <td><div><label id="cupo_maximo">${it.cupo_maximo} </label> </div></td>
                 <td><div><label id="costo">${it.costo} </label> </div></td>
-                <td><div><label id="estado">${it.estado} </label> </div></td>
             </tr>
             </g:each>            
         </table>
         </g:if>
-        <div class="estadisticas">
-        <g:link controller="Administrador" action="estadisticas" class="btn btn-success">Volver</g:link>
+        </div>
+        <div class="centrar">
+        <g:link controller="estadisticas" action="inicio" class="btn btn-success">Volver</g:link>
         </div>
     </div>
 </div>

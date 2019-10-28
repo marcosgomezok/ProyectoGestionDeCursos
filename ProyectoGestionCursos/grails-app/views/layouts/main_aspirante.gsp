@@ -24,8 +24,9 @@
             <li><g:link class="active" controller="aspirante" action="inicio">Inicio</g:link></li>
             <li><g:link controller="aspirante" action="miscertificados">Mis Certificados</g:link></li>
             <li><g:link controller="aspirante" action="miscursos">Mis Cursos</g:link></li>
+            <li><g:link controller="aspirante" action="miscupones">Mis Cupones</g:link></li>
             <li class="right"><g:link controller="usuario" action="logout"><i class="fas fa-sign-out-alt"></i> Cerrar sesión</g:link></li>
-            <li class="right"><label class="usuario logeado" for="usuario-logeado" ><i class="fas fa-user"></i> Aspirante: ${session?.user?.usuario}</label></li>    
+            <li class="right"><g:link controller="aspirante" action="cuenta"><i class="fas fa-user"></i> Aspirante: ${session?.user?.usuario}</g:link></li>   
         </ul>  
     </g:if>
     <g:else>

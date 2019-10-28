@@ -7,6 +7,10 @@ class ExpositoresController {
 
     def expositoresService
 
+    def inicio(){
+      render(view:"inicio")
+    }
+    
     def altaExpositor(){
       [expositores: new Expositores()]
     }
@@ -21,14 +25,35 @@ class ExpositoresController {
     }
     
     def asignarCurso(){
-      [expositor: Expositores.get(params.id)]
-      [listado: expositoresService.listadoCursos()]
+      def expositor= Expositores.get(params.id)
+      def listado= expositoresService.listadoCursos()
       [expositor:expositor, listado:listado]
     }
 
-    //añaden expositor al seleccionar un curso
-    def save() {
-      
+    def quitarCurso(){
+      def expositor= Expositores.get(params.id)
+      [expositor:expositor]
+    }
+
+    def confirmarQuitar(){
+      def curso = Curso.get(params.id)
+      def expositor= Expositores.get(params.id_exp)
+      curso.removeFromExp(expositor)
+      expositor.save(flush:true)
+      redirect(controller:"expositores",action:"listadoExpositores")
+    }
+
+    def guardarCursoExpositor(){
+      def curso = Curso.get(params.id)
+      def expositor = Expositores.get(params.id_exp)
+      expositor.addToCursos(curso)
+      curso.addToExp(expositor)
+      curso.save(flush: true)
+      expositor.save(flush:true)
+      redirect(controller:"expositores",action:"listadoExpositores")
+    }
+
+    def save() { 
       def curso = Curso.get(params.id)
       def expositor = new Expositores(params)
       expositor.addToCursos(curso)
@@ -38,8 +63,6 @@ class ExpositoresController {
       [curso: Curso.get(params.id)]
       [expositor: Expositores.get(params.id)]
       [expositor:expositor]
-      //[curso:curso]
-      //redirect(controller:"Curso",action:"curso_cargado")
     }
     
     def aniadirExpositor(){

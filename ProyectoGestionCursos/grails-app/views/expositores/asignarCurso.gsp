@@ -7,6 +7,8 @@
 
 <h3 class="barra">Listado de Cursos</h3>  
 <div class="container"> 
+<div class="mb-1 text-muted">Expositor: ${expositor.apellido} ${expositor.nombre}</div>
+<div class="mb-1 text-muted"></div>
   
 <g:each in="${listado?}">
 <div class="row mb-2">
@@ -16,10 +18,11 @@
                   <h3 class="mb-0">${it.nombre}</h3>
                   <div class="mb-1 text-muted">Fecha de inicio: <g:formatDate format="dd/MM/yyyy" date="${it.fecha_desde}"/></div>
                   <div class="mb-1 text-muted">Fecha de finalizacion: <g:formatDate format="dd/MM/yyyy" date="${it.fecha_hasta}"/></div>
-                  <div class="mb-1 text-muted"> Estado: ${it.estado}</div>
                   
-                  <g:form controller="curso" action="modificar_curso" method="POST">
+                  
+                  <g:form controller="expositores" action="guardarCursoExpositor" method="POST">
                     <g:hiddenField name="id" value="${it.id}" />
+                    <g:hiddenField name="id_exp" value="${expositor.id}" />
                     <button type="submit" class="btn btn-success">Asignar Curso</button>
                     
                   </g:form>

@@ -6,14 +6,15 @@
     <title>Estadisticas</title>
 </head>
 <body>
-<div class="tablainsestadisticas">
-    <div class="container">
+<div class=margenseparadorlayout>
+    <div class="container-fluid">
+        <div class="centrar mb-3"><h3>Listado de inscriptos por cursos</h3></div>
         <g:form action="inscriptosxCurso" method="POST">
             <div class="form-row">
                 <div class="form-group col-md-11">
                     <select name="id" class="custom-select mb-3">
                         <option selected>Elija un Curso</option>
-                        <g:each in="${listado?}">
+                        <g:each in="${cursos?}">
                         <option value="${it.id}">${it.nombre}</option>
                         </g:each>
                     </select>
@@ -24,8 +25,10 @@
                 </div>
             </div>
         </g:form>
-    <g:if test="${inscripciones!=null && curso!=null}">
-    <div class="mb-0"><h3>Nombre: <label id="nomcurso">${curso.nombre}</label></h3></div>
+        <div class="tabla_nth_child">
+        <g:if test="${curso!=null}">
+        <div class="mb-0"><h3><label id="nomcurso">${curso.nombre}</label> <label id="fd"> - <g:formatDate format="dd/MM/yyyy" date="${curso.fecha_desde}"/></label> al <label id="fh"><g:formatDate format="dd/MM/yyyy" date="${curso.fecha_hasta}"/></label></h3></div>
+        <g:if test="${inscripciones}">
         <table>
             <tr>
                 <th>Nombre y Apellido</th>
@@ -45,17 +48,21 @@
                 <td><div><label id="email">${it.asp.email} </label> </div></td>
                 <td><div><label id="categoria">${it.asp.categoria} </label> </div></td>
                 <td><div><label id="tipoins">${it.tipoInscrip} </label> </div></td>
-                <td><div><label id="pago">${it.pago} </label> </div></td>
+                <td><div><label id="pago">${it.cupon.pago} </label> </div></td>
                 <td><div><label id="certif">${it.certif.tipoCertif} </label> </div></td>
             </tr>
             </g:each>            
         </table>
-    </g:if>
-        <div class="estadisticas">
-        <g:link controller="Administrador" action="estadisticas" class="btn btn-success">Volver</g:link>
+        </g:if>
+        <g:else>
+        <div class="mb-0"><h3>No hay inscriptos en este curso</h3></div>
+        </g:else>
+        </g:if>
+        </div>
+        <div class="centrar">
+        <g:link controller="estadisticas" action="inicio" class="btn btn-success">Volver</g:link>
         </div>
     </div>
 </div>
-<script>(function () {corchetesinscriptosxcurso()} )();</script>
 </body>
 </html>

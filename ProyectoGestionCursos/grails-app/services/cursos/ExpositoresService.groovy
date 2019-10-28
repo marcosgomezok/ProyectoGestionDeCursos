@@ -10,9 +10,20 @@ class ExpositoresService {
   }
   
   List listadoExpositores() {
-    def expositor = Expositores.findAll()
-      return expositor
+    return Expositores.findAll()
   }
+
+  List listadoExpositoresSincurso(Curso curso) {
+    def expositores = Expositores.findAll()
+    def List<Expositores> expsacar = []
+        curso.exp.collect().each{ Expositores c ->
+          expsacar.push(c)
+        }
+    expositores.removeAll(expsacar)
+    return expositores
+    }
+    
+  
 
   List listadoCursos() {
     def cursos = Curso.findAll()

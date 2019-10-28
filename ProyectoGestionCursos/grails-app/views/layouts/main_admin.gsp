@@ -14,33 +14,22 @@
     <g:layoutHead/>
 </head>
 <body>
-<div class="container-fluid">
-        <div id="logo" class="row justify-content-center">
-                    <img src="http://tecno.unca.edu.ar/wp-content/uploads/2017/05/18575422_10211412467781016_1446490516_o.jpg">                       
-        </div>
+  <div class="container-fluid">
+    <div id="logo" class="row justify-content-center">
+      <img src="http://tecno.unca.edu.ar/wp-content/uploads/2017/05/18575422_10211412467781016_1446490516_o.jpg">                       
     </div>
+  </div>
 <g:if test="${session!=null && session.user!=null}">
   <ul class="topnav">
-        <li><g:link controller="administrador" action="inicio">Inicio</g:link></li>
-        <li><g:link controller="curso" action="alta">Alta Cursos</g:link></li>
-                <div class="dropdown-menu" aria-labelledby="dropdown01">
-                                      <a class="dropdown-item" href="adm_consultar_evento.html">Consultar Evento</a>
-                                      <a class="dropdown-item" href="adm_añadir_evento.html">Añadir nuevo Evento</a>
-                                      
-                </div>
-                
-        <li><g:link controller="curso" action="muestraCursosModificar">Modifica y Eliminar Cursos</g:link></li>
-        <li><g:link controller="curso" action="curso_cargado">Añadir Expositor a Curso</g:link></li>
-        <li><g:link controller="expositores" action="altaExpositor">Cargar Expositor</g:link></li>
-        <li><g:link controller="expositores" action="listadoExpositores">Listado Expositores</g:link></li>
-        <!--<li><g:link controller="inscripcion" action="listadoInscriptos">Estado Inscriptos</g:link></li>
-        <li><g:link controller="inscripcion" action="listadoAlumnos">Certificados</g:link></li>
-        <li><g:link controller="administrador" action="inicio">Estadisticas</g:link></li> 
-        <li><g:link controller="administrador" action="inicio">Alumnos</g:link></li>--> 
-        <li><g:link controller="administrador" action="estadisticas">Estadisticas</g:link></li>
-    <li class="right"><g:link controller="usuario" action="logout"><i class="fas fa-sign-out-alt"></i> Cerrar sesión</g:link></li>
-
-    <li class="right"><label class="usuario logeado" for="usuario-logeado" ><i class="fas fa-user-tie"></i> Administrador: ${session?.user?.usuario}</label></li>    
+    <li><g:link controller="administrador" action="inicio" class="active">Inicio</g:link></li>
+    <li><g:link controller="curso" action="inicio">Gestionar cursos</g:link></li>
+    <li><g:link controller="expositores" action="inicio">Gestionar expositores</g:link></li>
+    <li><g:link controller="autoridadCertificante" action="inicio">Gestionar autoridad cert.</g:link></li>
+    <li><g:link controller="Administrador" action="gestionCertificados">Gestionar Certificados</g:link></li>
+    <li><g:link controller="Administrador" action="gestionPago">Gestionar Pagos</g:link></li>
+    <li><g:link controller="estadisticas" action="inicio">Estadisticas</g:link></li>
+    <li class="right"><g:link controller="usuario" action="logout"><i class="fas fa-sign-out-alt"></i> Cerrar sesión</g:link></li> 
+    <li class="right"><g:link controller="administrador" action="cuenta"><i class="fas fa-user-tie"></i> Administrador: ${session?.user?.usuario}</g:link></li>    
   </ul>
 </g:if>
 <g:else>

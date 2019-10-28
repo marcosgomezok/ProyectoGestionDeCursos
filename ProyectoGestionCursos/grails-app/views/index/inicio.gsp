@@ -7,7 +7,6 @@
 <body>
   <h3 class="barra">Ofertas disponibles proximas a realizarse</h3>
     <g:each in="${listado?}">
-      <div class="row mb-2">
         <div class="col-md-12">
           <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
             <div class="col p-4 d-flex flex-column position-static">
@@ -16,7 +15,6 @@
             </div>                
           </div>
         </div>
-      </div>
     </g:each>
 </body>
 </html>

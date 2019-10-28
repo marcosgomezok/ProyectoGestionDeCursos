@@ -6,8 +6,8 @@
     <title>Inicio</title>
 </head>
 <body>
-<div class="login">
 <div class="container">
+<div class="menucentrado">
     <div class="row mb-2">
         <div class="col-md-3"></div>
             <div class="col-md-6">

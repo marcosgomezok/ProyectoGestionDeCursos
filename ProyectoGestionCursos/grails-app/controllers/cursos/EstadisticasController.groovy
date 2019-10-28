@@ -1,27 +1,30 @@
 package cursos
 
 class EstadisticasController {
-    def inscriptosxCurso() {
-        def listado = Curso.findAll()
-        def curso = Curso.get(params.id)
-        def inscripciones = Inscripcion.findAllByCurso(curso)
-        render(view:"inscriptosxCurso", model: [inscripciones: inscripciones, curso: curso, listado: listado])
+    def inscripcionService
+    def cursoService
+
+    def inicio(){  
+        render(view:"inicio")
     }
-    def pagoInscriptos() {       
-        def inscripciones = Inscripcion.findAllByPago(params.pago)
-        render(view:"pagoInscriptos", model: [inscripciones: inscripciones]) 
+    def inscriptosxCurso() {
+        def cursos = cursoService.listadoCursos()
+        def curso = cursoService.cursoxId(params)
+        def inscripciones = inscripcionService.inscripcionesxCurso(curso)
+        render(view:"inscriptosxCurso", model: [inscripciones: inscripciones, curso: curso, cursos: cursos])
+    }
+    def pagoInscriptos() { 
+        [inscripciones: inscripcionService.pago()]
+    }
+    def nopagoInscriptos() {       
+        [inscripciones: inscripcionService.noPago()] 
     }
     def cursosxFecha() {
-    if(params.fecha_desde==null&&params.fecha_hasta==null){   
-        render(view:"cursosxFecha")
-    }
-    else{
-        def fechaD = new Date().parse('yyyy-MM-dd', params.fecha_desde)
-        def fechaH = new Date().parse('yyyy-MM-dd', params.fecha_hasta)
-        def listado = Curso.withCriteria() {           
-        between("fecha_desde", fechaD, fechaH)
+        if(params.fecha_desde==null&&params.fecha_hasta==null){   
+            render(view:"cursosxFecha")
         }
-        render(view:"cursosxFecha", model: [listado: listado])   
-    }  
+        else{
+            [cursos: cursoService.cursosxFechas(params)]
+        }  
     }
 }

@@ -1,18 +1,24 @@
 package cursos
 
-import grails.gorm.services.Service
+import grails.gorm.transactions.Transactional
 
-@Service(AutoridadCertificante)
-interface AutoridadCertificanteService {
+@Transactional
+class AutoridadCertificanteService {
 
-    AutoridadCertificante get(Serializable id)
+  void altaAutoridad(Map params) {
+    def autoridad = new AutoridadCertificante(params).save(flush:true)
+  }
 
-    List<AutoridadCertificante> list(Map args)
-
-    Long count()
-
-    void delete(Serializable id)
-
-    AutoridadCertificante save(AutoridadCertificante autoridadCertificante)
-
+  List listadoAutoridades() {
+    return  AutoridadCertificante.findAll()
+  }
+  List listadoAutoridadesSincurso(Curso curso) {
+    def autoridades = AutoridadCertificante.findAll()
+    def List<AutoridadCertificante> autsacar = []
+        curso.aut.collect().each{ AutoridadCertificante a ->
+          autsacar.push(a)
+        }
+    autoridades.removeAll(autsacar)
+    return autoridades
+    }
 }
