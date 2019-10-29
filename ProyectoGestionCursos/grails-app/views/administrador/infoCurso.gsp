@@ -27,7 +27,7 @@
         </div>
         </div>
       </div>
-        <g:link controller="aspirante" action="inicio" class="btn btn-success">Cancelar</g:link>                 
+        <g:link controller="Administrador" action="inicio" class="btn btn-success">Volver</g:link>                 
   </g:if>
 </div>
 </body>

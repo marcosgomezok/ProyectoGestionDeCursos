@@ -19,5 +19,17 @@ class UrlMappings {
 
 	         }
          }
+         "/cursos"(resources: "Curso") {
+	         collection {
+              "/listadofinCursosJSON"(controller: "Curso", action: "listadofinCursosJSON")
+
+	         }
+         }
+         "/cursos"(resources: "Curso") {
+	         collection {
+              "/listadoproxCursosJSON"(controller: "Curso", action: "listadoproxCursosJSON")
+
+	         }
+         }
     }
 }

@@ -75,4 +75,17 @@ class AspiranteController {
       [cupon:  inscripcionService.altaInscripcion(params,session.user.id)]
     }
     }
+
+    def confirmarBajaInscripcion(){
+      [inscripcion: inscripcionService.inscripcionxId(params)]
+    }
+
+    def bajaInscripcion(){
+      inscripcionService.bajaInscripcion(params)
+      redirect(controller:"Aspirante",action:"inicio")
+    }
+
+    def verCupon(){
+      [inscripcion: inscripcionService.inscripcionxId(params)]
+    }
 }

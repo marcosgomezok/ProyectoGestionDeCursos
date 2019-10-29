@@ -26,6 +26,10 @@
                   <div class="mb-1 text-muted">Tipo de inscripcion: ${it.tipoInscrip}</div>
                   <div class="mb-1 text-muted">Pago: ${it.cupon.pago}</div>
                   <div class="mb-1 text-muted">Nro. inscripcion: ${it.id}</div>
+                  <g:form action="confirmarBajaInscripcion" method="POST">
+                  <g:hiddenField name="id" value="${it.id}" />
+                    <div></label><input type="submit" class="linkButton" value="Dar Baja"></div>
+                  </g:form>
             </div>                
           </div>
         </div>

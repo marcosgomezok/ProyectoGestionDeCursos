@@ -26,7 +26,7 @@
     <li><g:link controller="expositores" action="inicio">Gestionar expositores</g:link></li>
     <li><g:link controller="autoridadCertificante" action="inicio">Gestionar autoridad cert.</g:link></li>
     <li><g:link controller="Administrador" action="gestionCertificados">Gestionar Certificados</g:link></li>
-    <li><g:link controller="Administrador" action="gestionPago">Gestionar Pagos</g:link></li>
+    <li><g:link controller="Administrador" action="menuPago">Gestionar Pagos</g:link></li>
     <li><g:link controller="estadisticas" action="inicio">Estadisticas</g:link></li>
     <li class="right"><g:link controller="usuario" action="logout"><i class="fas fa-sign-out-alt"></i> Cerrar sesión</g:link></li> 
     <li class="right"><g:link controller="administrador" action="cuenta"><i class="fas fa-user-tie"></i> Administrador: ${session?.user?.usuario}</g:link></li>    

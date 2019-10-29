@@ -24,6 +24,14 @@ class AdministradorController {
       }
     }
 
+    def menuPago(){
+      render(view:"menuPago")
+    }
+
+    def listadoPagos(){
+      [inscripciones: inscripcionService.inscripciones()]
+    }
+
     def gestionPago(){
       [inscripciones: inscripcionService.noPago()]
     }

@@ -23,11 +23,17 @@
                 <div class="mb-1">Costo: <label id="costo">${it.curso.costo}</label></div>
                 <div class="mb-1">Estado: <label id="estado">${it.tipoInscrip}</label></div>
                 <div class="mb-1">Nro. inscripcion: <label id="idinscrip">${it.id}</label></div>
+                <g:form method="post" action="verCupon">           
+                  <g:hiddenField name="id" value="${it.id}"/>
+                    <button type="submit" class="btn btn-success">Ver cupon</button>                
+                </g:form>
             </div>                
           </div>
         </div>
       </div>
+
     </div>
+    
     </g:each>
   </g:if>   
   <g:else>

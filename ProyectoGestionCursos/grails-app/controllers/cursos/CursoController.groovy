@@ -71,5 +71,13 @@ class CursoController extends RestfulController<Curso>{
       respond cursoService.listadoCursos()
     }
 
+    def listadofinCursosJSON(){
+      respond cursoService.listadoCursosFinalizados()
+    }
+
+    def listadoproxCursosJSON(){
+      respond cursoService.listadoProximosCursos()
+    }
+
 }
 

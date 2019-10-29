@@ -42,6 +42,13 @@ class CursoService {
     return cursos
   }
 
+  List listadoCursosFinalizados() {
+    def cursos = Curso.withCriteria() {           
+      lt("fecha_hasta", new Date())
+    }
+    return cursos
+  }
+
   void altaCurso(Map params) {
     def c = new Curso()
     c.nombre = params.nombre
