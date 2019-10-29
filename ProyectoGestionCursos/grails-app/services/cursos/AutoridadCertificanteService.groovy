@@ -12,6 +12,10 @@ class AutoridadCertificanteService {
   List listadoAutoridades() {
     return  AutoridadCertificante.findAll()
   }
+   List listadoCursos() {
+    def cursos = Curso.findAll()
+      return cursos
+  }
   List listadoAutoridadesSincurso(Curso curso) {
     def autoridades = AutoridadCertificante.findAll()
     def List<AutoridadCertificante> autsacar = []

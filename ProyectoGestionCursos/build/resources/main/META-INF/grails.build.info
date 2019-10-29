@@ -1,6 +1,6 @@
-#Mon, 28 Oct 2019 18:11:15 -0300
+#Mon, 28 Oct 2019 23:21:31 -0300
 
 info.app.version=0.1
-info.app.name=ProyectoGestionCursosSeguridadULTIMO
+info.app.name=ProyectoGestionCursosSeguridadUltimoAPIREST
 grails.env=development
 info.app.grailsVersion=3.3.8

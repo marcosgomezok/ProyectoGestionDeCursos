@@ -28,7 +28,7 @@ class AutoridadCertificanteController {
     }
 
     def listadoAutoridad(){
-      [autoridades: autoridadCertificanteService.listadoAutoridad()]
+      [autoridades: autoridadCertificanteService.listadoAutoridades()]
     }
 
     def verImagen () {
@@ -53,18 +53,18 @@ class AutoridadCertificanteController {
       
       redirect(controller:"autoridadCertificante",action:"listadoAutoridad")
     }
-/*
+
     def quitarCurso(){
-      def expositor= Expositores.get(params.id)
-      [expositor:expositor]
+      def autoridad= AutoridadCertificante.get(params.id)
+      [autoridad:autoridad]
     }
 
     def confirmarQuitar(){
       def curso = Curso.get(params.id)
-      def expositor= Expositores.get(params.id_exp)
-      curso.removeFromExp(expositor)
-      expositor.save(flush:true)
-      redirect(controller:"expositores",action:"listadoExpositores")
-    }*/
+      def autoridad= AutoridadCertificante.get(params.id_exp)
+      curso.removeFromAut(autoridad)
+      autoridad.save(flush:true)
+      redirect(controller:"autoridadCertificante",action:"listadoAutoridad")
+    }
     
 }

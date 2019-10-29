@@ -18,7 +18,7 @@
                   <td><g:link controller="autoridadCertificante" action="altaAutoridadCertificante">Alta Autoridad Certificante</g:link></td>
                 </tr>
                 <tr>
-                  <td><g:link controller="expositores" action="listadoExpositores">Listado Autoridad Certificante</g:link></td>
+                  <td><g:link controller="autoridadCertificante" action="listadoAutoridad">Listado Autoridad Certificante</g:link></td>
                 </tr>
               </table>
             </div>

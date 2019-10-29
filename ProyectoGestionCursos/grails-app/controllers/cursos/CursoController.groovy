@@ -70,5 +70,6 @@ class CursoController extends RestfulController<Curso>{
     def listadoCursosJSON(){
       respond cursoService.listadoCursos()
     }
+
 }
 

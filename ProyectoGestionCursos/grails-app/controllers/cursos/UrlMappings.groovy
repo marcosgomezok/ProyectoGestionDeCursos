@@ -16,6 +16,7 @@ class UrlMappings {
         "/cursos"(resources: "Curso") {
 	         collection {
               "/listadoCursosJSON"(controller: "Curso", action: "listadoCursosJSON")
+
 	         }
          }
     }

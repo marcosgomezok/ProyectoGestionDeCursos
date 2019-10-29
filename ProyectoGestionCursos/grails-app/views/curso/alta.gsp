@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <meta name="layout" content="main_admin"/>
+    <meta name="layout" content="main_selectmultiple"/>
     <title>Alta</title>
 </head>
 <body>
@@ -86,7 +86,7 @@
         </div>
             <div class="form-group row">
                 <div class="col-sm-12">
-                    <select name="aut" multiple class="form-control" id="exampleFormControlSelect1">
+                    <select name="aut" multiple class="selectpicker form-control" id="exampleFormControlSelect1" data-style="btn-info">
                         <g:each in="${autoridades?}">
                             <option value="${it.id}">${it.apellido} ${it.nombre}</option>
                         </g:each>
@@ -100,18 +100,20 @@
         </div>
         <div class="form-group row">
             <div class="col-sm-12">
-                <select name="exp" multiple class="form-control" id="exampleFormControlSelect2">
+                <select name="exp" multiple class="selectpicker form-control" id="exampleFormControlSelect2" data-style="btn-info">
                     <g:each in="${expositores?}">
                         <option value="${it.id}">${it.apellido} ${it.nombre}</option>
                     </g:each>
                 </select>
             </div>
         </div>
+        <div class="espacioblanco">
         <div class="row">
             <div class="col-sm-12">
                 <button type="submit" class="btn btn-success">Aceptar</button>
                 <g:link controller="administrador" action="inicio" class="btn btn-success">Cancelar</g:link>
             </div>  
+        </div> 
         </div>             
     </g:form>
 </div>

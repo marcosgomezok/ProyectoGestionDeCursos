@@ -5,45 +5,51 @@
     <title>Listado de Expositores</title>
 </head>
 <body>
-<h3 class="barra">Listado de Expositores</h3>  
 <div class="container">
- <g:if test="${expositores}"> 
-<g:each in="${expositores?}">
-<div class="row mb-2">
-            <div class="col-md-12">
-              <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-                <div class="col p-4 d-flex flex-column position-static">
-                    <div class="mb-1 text-muted">Apellido: ${it.apellido}</div>
-                    <div class="mb-1 text-muted">Nombre: ${it.nombre}</div>
-                    <div class="mb-1 text-muted">Dni: ${it.dni}</div>
-                    <div class="mb-1 text-muted">Título: ${it.titulo}</div>
-                    <div class="mb-1 text-muted">Cursos: ${it.cursos.nombre}</div>
-                    <div class="form-group row">
-                    <div class="col-sm-10">
-                    <g:form method="POST" action="asignarCurso" >
+<div class="margenseparadorlayouttop">
+        <div class="centrar mb-3"><h3>Listado de expositores</h3></div>
+        <div class="tabla_nth_child">
+        <g:if test="${expositores}">
+        <table>
+            <tr>
+                <th>Nombre y Apellido</th>
+                <th>Dni</th>
+                <th>Título</th>
+                <th>Cursos</th> 
+                <th>Accion</th>
+                <th>Accion</th>
+
+            </tr>
+            <g:each in="${expositores?}" >
+            <tr>
+                <td>${it.nombre} ${it.apellido}</td>
+                <td>${it.dni}</td>
+                <td>${it.titulo} </td>
+                <td> ${it.cursos.nombre}</td>
+                <td>
+                <g:hiddenField name="id" value="${it.id}" />
+                <g:form method="POST" action="asignarCurso"  >
                     <g:hiddenField name="id" value="${it.id}" />
                       <button type="submit" class="btn btn-success">Asignar Curso</button>
-                    </g:form>
-                    </div>
-                    </div>
-                    <div class="form-group row">
-                    <div class="col-sm-10">
-                    
+                </g:form>
+                </td>
+                <td>
+                    <g:hiddenField name="id" value="${it.id}" />
                     <g:form method="POST" action="quitarCurso" >
                     <g:hiddenField name="id" value="${it.id}" />
                       <button type="submit" class="btn btn-success">Quitar Curso</button>
-                    </g:form>
-                    </div>
-                    </div>
-                    </div>         
-              </div>
-             </div>
-  </div>
-  </g:each>
-  </g:if> 
-  <g:else>
-        <div class="mb-0"><h3>No tiene expositores cargados.</h3></div>
-  </g:else>
+                    </g:form> 
+                </td>
+                 
+            </tr>     
+            </g:each> 
+            </table>
+        </g:if>
+        <g:else>
+        <div class="mb-0"><h3>No tiene Autoridades Certificantes cargadas.</h3></div>
+         </g:else>
+        </div>
+    </div>
 </div>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
