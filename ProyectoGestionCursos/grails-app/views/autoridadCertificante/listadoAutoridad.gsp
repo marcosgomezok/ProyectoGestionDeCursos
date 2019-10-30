@@ -5,7 +5,7 @@
     <title>Listado de Autoridades</title>
 </head>
 <body>
-<div class="container-fluid">
+<div class="container">
 <div class="margenseparadorlayouttop">
         <div class="centrar mb-3"><h3>Listado de autoridades</h3></div>
         <div class="tabla_nth_child">
@@ -33,8 +33,7 @@
                       Sin curso asignado.
                       </g:else>
                       </td>
-                <td><!--<img src=${createLink(controller:"AutoridadCertificante", action:"verImagen", id:"${params.id}")} width='300' />--></td>
-                    
+                <td width="200px" height="38px"><img  src="${createLink(controller: 'AutoridadCertificante', action: 'verImagen', id:"${it.id}")}" width="200px" height="38px"/></td>              
                 <td>
                 <g:hiddenField name="id" value="${it.id}" />
                 <g:form method="POST" action="asignarCurso"  >

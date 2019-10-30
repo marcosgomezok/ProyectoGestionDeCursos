@@ -10,7 +10,7 @@ class AutoridadCertificanteService {
   }
 
   void altaAutoridadCertificante(Map params) {
-    byte[] file = params.firma
+    def file = params.firma
       def img = new AutoridadCertificante(apellido: params.apellido, nombre:params.nombre, dni: params.dni, firma:file, cargo: params.cargo)
       img.save(flush:true)
       if (img.hasErrors()) {
@@ -18,12 +18,6 @@ class AutoridadCertificanteService {
                 println it
             }
       }
-  }
-
-  void verImagenS(Map params){
-    def img = AutoridadCertificante.get(params.id)
-    response.outputStream << img
-    response.outputStream.flush()
   }
 
   AutoridadCertificante autoridadxId(Map params){

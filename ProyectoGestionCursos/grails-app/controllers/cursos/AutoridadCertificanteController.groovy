@@ -25,7 +25,12 @@ class AutoridadCertificanteController {
     }
 
     def verImagen () {
-      autoridadCertificanteService.verImagenS(params)
+      def img = autoridadCertificanteService.autoridadxId(params)
+      byte[] imagen = img.firma
+      response.setHeader('Content-length', imagen.length.toString())
+      response.contentType = 'image/png'
+      response.outputStream << imagen
+      response.outputStream.flush()
     }
 
     def asignarCurso(){
