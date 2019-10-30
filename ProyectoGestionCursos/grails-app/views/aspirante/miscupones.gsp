@@ -31,9 +31,7 @@
           </div>
         </div>
       </div>
-
     </div>
-    
     </g:each>
   </g:if>   
   <g:else>

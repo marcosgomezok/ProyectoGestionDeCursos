@@ -1,5 +1,6 @@
 package cursos
 import grails.rest.RestfulController
+import static org.springframework.http.HttpStatus.METHOD_NOT_ALLOWED
 
 class CursoController extends RestfulController<Curso>{
   static responseFormats = ['json', 'xml']
@@ -78,6 +79,16 @@ class CursoController extends RestfulController<Curso>{
     def listadoproxCursosJSON(){
       respond cursoService.listadoProximosCursos()
     }
+    @Override
+    def delete() {
+        render status: METHOD_NOT_ALLOWED
+    }
+
+    @Override
+    def update() {
+        render status: METHOD_NOT_ALLOWED
+    }
+
 
 }
 

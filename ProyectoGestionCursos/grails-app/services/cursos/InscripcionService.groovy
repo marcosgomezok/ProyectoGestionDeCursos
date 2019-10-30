@@ -73,9 +73,10 @@ class InscripcionService {
 
    List inscripcionespCertificados(){
      def inscripciones = Inscripcion.withCriteria() {     
+       /*
       curso{
         le("fecha_hasta", new Date())
-      }         
+      }  */       
     }
     return inscripciones
    }

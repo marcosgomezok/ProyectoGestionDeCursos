@@ -88,4 +88,8 @@ class AspiranteController {
     def verCupon(){
       [inscripcion: inscripcionService.inscripcionxId(params)]
     }
+
+    def verCertificado(){
+      [inscripcion: inscripcionService.inscripcionxId(params)]
+    }
 }

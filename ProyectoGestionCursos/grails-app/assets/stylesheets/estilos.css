@@ -155,3 +155,18 @@ td, th {
   vertical-align:middle;
 }
 
+.certif{
+  margin-bottom: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
+  text-align : justify
+}
+
+.fechacertif{
+  margin: 20px;
+  text-align: right;
+}
+
+.firmas{
+  text-align:left;
+}
