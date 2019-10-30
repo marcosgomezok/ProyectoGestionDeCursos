@@ -6,6 +6,7 @@ import static org.springframework.http.HttpStatus.*
 class ExpositoresController {
 
     def expositoresService
+    def cursoService
 
     def inicio(){
       render(view:"inicio")
@@ -25,50 +26,52 @@ class ExpositoresController {
     }
     
     def asignarCurso(){
-      def expositor= Expositores.get(params.id)
+      def expositor = expositoresService.expositorxId(params)
       def listado= expositoresService.listadoCursos()
       [expositor:expositor, listado:listado]
     }
 
     def quitarCurso(){
-      def expositor= Expositores.get(params.id)
+      def expositor = expositoresService.expositorxId(params)
       [expositor:expositor]
     }
 
     def confirmarQuitar(){
-      def curso = Curso.get(params.id)
-      def expositor= Expositores.get(params.id_exp)
-      curso.removeFromExp(expositor)
-      expositor.save(flush:true)
+      expositoresService.quitarCurso(params)
       redirect(controller:"expositores",action:"listadoExpositores")
     }
 
     def guardarCursoExpositor(){
-      def curso = Curso.get(params.id)
-      def expositor = Expositores.get(params.id_exp)
-      expositor.addToCursos(curso)
-      curso.addToExp(expositor)
-      curso.save(flush: true)
-      expositor.save(flush:true)
+      expositoresService.guardarExpositor(params)
       redirect(controller:"expositores",action:"listadoExpositores")
     }
 
-    def save() { 
-      def curso = Curso.get(params.id)
-      def expositor = new Expositores(params)
-      expositor.addToCursos(curso)
-      curso.addToExp(expositor)
-      curso.save(flush: true)
-      expositor.save(flush:true)
-      [curso: Curso.get(params.id)]
-      [expositor: Expositores.get(params.id)]
+    def modificar(){
+      [expositores: expositoresService.listadoExpositores()]
+    }
+
+    def modificarDatosExp(){
+      def expositor = expositoresService.expositorxId(params)
       [expositor:expositor]
     }
-    
-    def aniadirExpositor(){
-      [expositores: new Expositores()]
-      [curso: Curso.get(params.id)]
-      
+
+    def guardarDatosModif(){
+      expositoresService.modificarExpositor(params)
+      render(controller:"Expositores",view:"inicio")
+    }
+
+    def baja(){
+      [expositores: expositoresService.listadoExpositores()]
+    }
+
+    def eliminarExpositor(){
+      def expositor = expositoresService.expositorxId(params)
+      [expositor:expositor]
+    }
+
+    def confirmarEliminar(){
+      expositoresService.eliminarExpositor(params)
+      render(controller:"Expositores",view:"inicio")
     }
     
 }

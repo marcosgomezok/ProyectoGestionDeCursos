@@ -18,8 +18,15 @@
                   <td><g:link controller="expositores" action="altaExpositor">Alta Expositor</g:link></td>
                 </tr>
                 <tr>
+                  <td><g:link controller="expositores" action="modificar">Modificar Expositor</g:link></td>
+                </tr>
+                <tr>
+                  <td><g:link controller="expositores" action="baja">Baja Expositor</g:link></td>
+                </tr>
+                <tr>
                   <td><g:link controller="expositores" action="listadoExpositores">Listado Expositores</g:link></td>
                 </tr>
+                
               </table>
             </div>
         <div class="col-md-3"></div>

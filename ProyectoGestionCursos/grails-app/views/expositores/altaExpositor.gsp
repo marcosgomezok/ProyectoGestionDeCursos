@@ -33,11 +33,11 @@
                         <input type="text" class="form-control" id="cargo" name="titulo">
                       </div>
                   </div>      
-                  <div class="form-group row">
-                      <div class="col-sm-10">
+                  <div class="centrar">
+                      <div class="centrar">
                       
                           <button type="submit" class="btn btn-outline-success">Añadir</button>
-                          <g:link controller="administrador" action="inicio" class="btn btn-outline-success">Cancelar</g:link>
+                          <g:link controller="Expositores" action="inicio" class="btn btn-outline-success">Cancelar</g:link>
                       
                     </div>
                     </div>                 

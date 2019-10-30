@@ -16,8 +16,8 @@
                 <th>Dni</th>
                 <th>Título</th>
                 <th>Cursos</th> 
-                <th>Accion</th>
-                <th>Accion</th>
+                <th>Acción</th>
+                <th>Acción</th>
 
             </tr>
             <g:each in="${expositores?}" >
@@ -25,7 +25,13 @@
                 <td>${it.nombre} ${it.apellido}</td>
                 <td>${it.dni}</td>
                 <td>${it.titulo} </td>
-                <td> ${it.cursos.nombre}</td>
+                <td> <g:if test="${it.cursos}">
+                      ${it.cursos.nombre}
+                      </g:if>
+                      <g:else>
+                      Sin curso asignado.
+                      </g:else></td>
+    
                 <td>
                 <g:hiddenField name="id" value="${it.id}" />
                 <g:form method="POST" action="asignarCurso"  >
@@ -50,6 +56,9 @@
          </g:else>
         </div>
     </div>
+    <div class="centrar">
+      <g:link controller="Expositores" action="inicio" class="btn btn-success">Volver</g:link>
+  </div>
 </div>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

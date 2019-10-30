@@ -14,7 +14,6 @@ String.metaClass.uncapitalize = {
     if (delegate.length() <= 1) return delegate.toLowerCase()
     return delegate[0].toLowerCase() + delegate[1..-1]
 }*/
-
 version "0.1"
 group "cursos"
 

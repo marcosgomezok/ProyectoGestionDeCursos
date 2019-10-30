@@ -47,14 +47,11 @@
                           <input type="file" class="form-control" id="firma" name="firma">
                       </div>
                 </div>
-                
-                 <div class="form-group row">
                       <div class= "centrar">
                       
                           <button type="submit" class="btn btn-outline-success">Añadir</button>
-                          <g:link controller="administrador" action="inicio" class="btn btn-outline-success">Cancelar</g:link>
-                      
-                    </div>
+                          <g:link controller="autoridadCertificante" action="inicio" class="btn btn-outline-success">Cancelar</g:link>
+                    
                     </div>  
                     </g:form>               
             

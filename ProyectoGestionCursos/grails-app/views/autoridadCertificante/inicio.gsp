@@ -12,10 +12,16 @@
             <div class="col-md-6">
               <table>
                 <tr>
-                  <th>Gestion de Expositores</th>
+                  <th>Gestion de Autoridades Certificantes</th>
                 </tr>
                 <tr>
                   <td><g:link controller="autoridadCertificante" action="altaAutoridadCertificante">Alta Autoridad Certificante</g:link></td>
+                </tr>
+                <tr>
+                  <td><g:link controller="autoridadCertificante" action="modificar">Modificar Autoridad Certificante</g:link></td>
+                </tr>
+                <tr>
+                  <td><g:link controller="autoridadCertificante" action="baja">Baja Autoridad Certificante</g:link></td>
                 </tr>
                 <tr>
                   <td><g:link controller="autoridadCertificante" action="listadoAutoridad">Listado Autoridad Certificante</g:link></td>

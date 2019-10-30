@@ -26,8 +26,14 @@
                 <td>${it.nombre} ${it.apellido}</td>
                 <td>${it.dni}</td>
                 <td>${it.cargo} </td>
-                <td> ${it.cursos.nombre}</td>
-                <td><img src=${createLink(controller:"AutoridadCertificante", action:"verImagen", id:"${params.id}")} width='300' /></td>
+                <td> <g:if test="${it.cursos}">
+                      ${it.cursos.nombre}
+                      </g:if>
+                      <g:else>
+                      Sin curso asignado.
+                      </g:else>
+                      </td>
+                <td><!--<img src=${createLink(controller:"AutoridadCertificante", action:"verImagen", id:"${params.id}")} width='300' />--></td>
                     
                 <td>
                 <g:hiddenField name="id" value="${it.id}" />
@@ -51,6 +57,9 @@
         <g:else>
         <div class="mb-0"><h3>No tiene Autoridades Certificantes cargadas.</h3></div>
          </g:else>
+        </div>
+        <div class="centrar">
+        <g:link controller="AutoridadCertificante" action="inicio" class="btn btn-success">Volver</g:link>
         </div>
     </div>
     </div>
