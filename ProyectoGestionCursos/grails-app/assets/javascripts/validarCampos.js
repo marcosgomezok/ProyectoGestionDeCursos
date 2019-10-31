@@ -1,22 +1,15 @@
-function claves(clave8){
-    if(clave8.length<6 || clave8.length>8){
-    alert("Error, la contraseña debe tener entre 6 y 8 caracteres");
+function clavescheck(){
+    if(document.getElementById('password').value.length < 6 || document.getElementById('password').value.length > 8){
+        alert("Error, la contraseña debe tener entre 6 y 8 caracteres");
+    }
+    else{
+        if((document.getElementById('password').value != document.getElementById('re_password').value) && document.getElementById('re_password').value != ""){
+            alert("Error, las contraseñas no son iguales")
+        }
     }
 }
-function reclaves(clave,reclave){
-    if(clave!=reclave){
-    alert("Error, las contraseñas no son iguales");
-    }
-}
-function tomaclave(){
-    let clave2 = document.getElementById("password").value;
-    claves(clave2);
-}
-function tomareclave(){
-    let reclave2 = document.getElementById("re_password").value;
-    let clave2 = document.getElementById("password").value;
-    reclaves(clave2,reclave2);
-}
+
+
 function borrarmsj(){
     document.getElementById("msj").innerHTML = "";
 }

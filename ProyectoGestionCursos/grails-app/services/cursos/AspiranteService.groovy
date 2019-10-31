@@ -13,29 +13,27 @@ class AspiranteService {
     return Aspirante.get(id)
   }
 
+  Aspirante aspirantexUsername(String usuario){
+    return Aspirante.findByUsuario(usuario)
+  }
+
   Usuario modifyAspirante(Map params, Long id){
     def asp = Aspirante.get(id)
-    asp.nombre = params.nombre
-    asp.apellido = params.apellido
-    asp.dni = Integer.parseInt(params.dni)
-    asp.email = params.email
-    asp.categoria = params.categoria
+    asp.properties = params
     asp.save(flush:true)
-    def u = Usuario.findById(id)
-    return u
+    return Usuario.findById(id)
   }
 
   List aspiranteCursos(Long id){
-    def miscursos = Inscripcion.withCriteria() {           
+    return Inscripcion.withCriteria() {           
       asp {
         eq("id", id)
         }
       }
-    return miscursos
   }
 
   List aspiranteCertificados(Long id){
-    def miscertif = Inscripcion.withCriteria() {           
+    return Inscripcion.withCriteria() {           
       asp {
         eq("id", id)
         }
@@ -43,23 +41,14 @@ class AspiranteService {
         isNotNull("tipoCertif")
         }
       }
-    return miscertif
   }
 
   List aspiranteCupones(Long id){
-    def miscupones = Inscripcion.withCriteria() {  
+    return Inscripcion.withCriteria() {  
       eq("tipoInscrip", "Inscripto")         
       asp {
         eq("id", id)
         }
       }
-    return miscupones
-  }
-
-  Aspirante modifyPw(Map params, Long id){
-    def asp = Aspirante.get(id)
-    asp.password = params.password
-    asp.save(flush:true)
-    return Usuario.findById(id)
   }
 }

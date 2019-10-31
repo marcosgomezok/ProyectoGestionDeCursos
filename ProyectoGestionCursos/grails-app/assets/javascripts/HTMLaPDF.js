@@ -18,7 +18,7 @@
                  format: 'a4'
              });
             doc.addImage(img, 'JPEG', 20, 20);
-            doc.save('FTyCAenPDF.pdf');
+            doc.save('PDFautoGeneradoFTyCA.pdf');
             form.width(cache_width);
         });
     }

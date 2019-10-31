@@ -21,10 +21,9 @@ class CursoService {
   List cursosxFechas(Map params){
     def fechaD = new Date().parse('yyyy-MM-dd', params.fecha_desde)
     def fechaH = new Date().parse('yyyy-MM-dd', params.fecha_hasta)
-    def cursos = Curso.withCriteria() {           
+    return Curso.withCriteria() {           
       between("fecha_desde", fechaD, fechaH)
     }
-    return cursos
   }
 
   Curso cursoxId(Map params){
@@ -36,17 +35,15 @@ class CursoService {
   }
 
   List listadoProximosCursos() {
-    def cursos = Curso.withCriteria() {           
+    return Curso.withCriteria() {           
       gt("fecha_desde", new Date())
     }
-    return cursos
   }
 
   List listadoCursosFinalizados() {
-    def cursos = Curso.withCriteria() {           
+    return Curso.withCriteria() {           
       lt("fecha_hasta", new Date())
     }
-    return cursos
   }
 
   void altaCurso(Map params) {

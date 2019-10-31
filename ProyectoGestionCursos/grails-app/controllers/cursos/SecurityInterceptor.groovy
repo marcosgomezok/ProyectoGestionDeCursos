@@ -13,14 +13,20 @@ class SecurityInterceptor {
     match(controller:"aspirante", action:"inicio")
     match(controller:"aspirante", action:"cuenta")
     match(controller:"aspirante", action:"modify")
+    match(controller:"aspirante", action:"modifyPw")
     match(controller:"aspirante", action:"miscupones")
     match(controller:"aspirante", action:"miscursos")
     match(controller:"aspirante", action:"miscertificados")
     match(controller:"aspirante", action:"inscripcion")
     match(controller:"aspirante", action:"cupon")
+    match(controller:"aspirante", action:"confirmarBajaInscripcion")
+    match(controller:"aspirante", action:"bajaInscripcion")
+    match(controller:"aspirante", action:"verCupon")
+    match(controller:"aspirante", action:"verCertificado")
     match(controller:"administrador", action:"inicio")
     match(controller:"administrador", action:"cuenta")
     match(controller:"administrador", action:"modify")
+    match(controller:"administrador", action:"modifyPw")
     match(controller:"administrador", action:"gestionPago")
     match(controller:"administrador", action:"seleccionarPago")
     match(controller:"administrador", action:"modifyPago")
@@ -50,7 +56,7 @@ class SecurityInterceptor {
           redirect(controller: "usuario", action: "inicio")
           return false
         }
-        if(controllerName=='aspirante' && (actionName=='inicio'||actionName=='cuenta'||actionName=='modify'||actionName=='miscupones'||actionName=='miscursos'||actionName=='miscertificados'||actionName=='cupon'||actionName=='inscripcion')) {
+        if(controllerName=='aspirante' && (actionName=='inicio'||actionName=='cuenta'||actionName=='modify'||actionName=='modifyPw'||actionName=='miscupones'||actionName=='miscursos'||actionName=='miscertificados'||actionName=='inscripcion'||actionName=='cupon'||actionName=='confirmarBajaInscripcion'||actionName=='bajaInscripcion'||actionName=='verCupon'||actionName=='verCertificado')) {
             if(session.user instanceof Administrador){
                 redirect(controller:"administrador", action: "inicio")
                  return false   
