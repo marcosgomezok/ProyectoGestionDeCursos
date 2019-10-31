@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta name="layout" content="main"/>
     <asset:javascript src="validarCampos.js"/>
@@ -18,13 +18,13 @@
                                 <div class="control-group">
                                     <label class="control-label" for="usuario">Usuario</label>
                                         <div class="controls">
-                                            <input id="usuario" name="usuario" type="text" value="" maxlength="60" required onclick="borrarmsj()">
+                                            <input id="usuario" name="usuario" type="text" maxlength="60" required onclick="borrarmsj()">
                                         </div>
                                 </div>
                                 <div class="control-group">
                                     <label class="control-label" for="password">Contraseña</label>
                                         <div class="controls">
-                                            <input id="password" name="password" type="password" value="" maxlength="20" required onclick="borrarmsj()"><br><br>
+                                            <input id="password" name="password" type="password" maxlength="20" required onclick="borrarmsj()"><br><br>
                                         </div>
                                 </div>
                                 <div class="control-group">
@@ -34,8 +34,8 @@
                                 </div>
                             </g:form>                        
                             <g:link controller="aspirante" action="alta">Olvidé mi contraseña</g:link>
-                            <g:if test="${flash.message}">
-                                <div class="update_message" role="status"><label id="msj">${flash.message}</label></div>
+                            <g:if test="${message}">
+                                <div class="messagealert" role="status"><label id="msj">${message}</label></div>
                             </g:if>
                     </div>                
                 </div>

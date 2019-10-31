@@ -170,3 +170,7 @@ td, th {
 .firmas{
   text-align:left;
 }
+
+.messagealert{
+  color: red;
+}

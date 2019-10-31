@@ -11,7 +11,7 @@ class IndexController {
     def infoCurso(){
       session.user=null
       if(params.id==null){   
-        redirect(controller:"Index",action:"inicio")
+        redirect(uri: "/")
       }
       else{
       [curso: cursoService.cursoxId(params)]

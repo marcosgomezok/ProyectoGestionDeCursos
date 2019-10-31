@@ -55,4 +55,11 @@ class AspiranteService {
       }
     return miscupones
   }
+
+  Aspirante modifyPw(Map params, Long id){
+    def asp = Aspirante.get(id)
+    asp.password = params.password
+    asp.save(flush:true)
+    return Usuario.findById(id)
+  }
 }

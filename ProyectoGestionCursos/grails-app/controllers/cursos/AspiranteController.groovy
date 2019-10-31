@@ -92,4 +92,13 @@ class AspiranteController {
     def verCertificado(){
       [inscripcion: inscripcionService.inscripcionxId(params)]
     }
+
+    def modifyPw(){
+      if(session.user.password == params.actpassword){
+        if(params.password == params.re_password){
+          session.user = aspiranteService.modifyPw(params, session.user.id)
+        }
+      }
+      redirect(controller:"Aspirante",action:"inicio")
+    }
 }

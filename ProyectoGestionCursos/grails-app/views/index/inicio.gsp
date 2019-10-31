@@ -6,6 +6,7 @@
 </head>
 <body>
   <h3 class="barra">Ofertas disponibles proximas a realizarse</h3>
+  <g:if test="${listado}">
     <div class="container">
     <g:each in="${listado?}">
     <div class="submenucentradocurso">
@@ -26,5 +27,9 @@
     </div>
     </g:each>
   </div>
+  </g:if>
+  <g:else>
+  <div class="menucentrado"><h3>No hay ofertas disponibles proximas a realizarces</h3></div>      
+  </g:else>
 </body>
 </html>

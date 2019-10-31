@@ -5,16 +5,17 @@ class UsuarioController {
 
     def inicio() {
       session.user=null
-      render(view:"inicio")
+      redirect(controller:"Usuario",action: "login")
     }
     
     def login() {
-      if (params==null) {
-      redirect(controller: "Usuario", view: 'inicio')
+      session.user=null
+      if (request.get){
+      return render(view: "inicio")
       }
       def u = usuarioService.usuarioxUser(params.usuario)
-      if (u) {
-        if (u.password == params.password) {
+      if (u){
+        if (u.password == u.generateMD5_A(params.password)) {
         session.user = u
         if(u instanceof Aspirante){
         redirect(controller:"Aspirante",action:"inicio")   
@@ -23,18 +24,16 @@ class UsuarioController {
         redirect(controller:"Administrador",action:"inicio")    
         }
         } 
-        else {  
-        redirect(controller:"Usuario",action:"inicio")
-        flash.message = "Contraseña incorrecta"
+        else{  
+        render(view: "inicio", model: [message: "Clave incorrecta"])
         }
       } 
-      else {
-      redirect(controller:"Usuario",action:"inicio")
-      flash.message = "Usuario no encontrado"
+      else{
+      render(view: "inicio", model: [message: "Usuario no encontrado"])
       }
     }
 
-    def logout() {
+    def logout(){
       session.user=null
       redirect(controller:"usuario", action: "inicio")
     }

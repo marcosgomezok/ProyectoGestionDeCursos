@@ -8,4 +8,5 @@ class UsuarioService {
     Usuario usuarioxUser(String usuario){
         return Usuario.findByUsuario(usuario)
     }
+    
 }

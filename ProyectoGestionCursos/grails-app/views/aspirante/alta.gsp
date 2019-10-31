@@ -46,9 +46,9 @@
           </div>
       </div>
       <div class="form-group row">
-        <label for="mail" class="col-sm-2 col-form-label">Email</label>
+        <label for="mail" class="col-sm-2 col-form-label">Email (opcional)</label>
           <div class="col-sm-10">
-            <input type="email" class="form-control" id="mail" name="email" required>
+            <input type="email" class="form-control" id="mail" name="email">
           </div>
       </div>         
       <div class="form-group row">
