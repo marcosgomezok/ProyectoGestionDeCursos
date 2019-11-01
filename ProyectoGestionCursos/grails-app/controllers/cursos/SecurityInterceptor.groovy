@@ -33,6 +33,9 @@ class SecurityInterceptor {
     match(controller:"administrador", action:"gestionCertificados")
     match(controller:"administrador", action:"seleccionarCertificado")
     match(controller:"administrador", action:"modifyCertif")
+    match(controller:"administrador", action:"menuPago")
+    match(controller:"administrador", action:"listadoPagos")
+    match(controller:"administrador", action:"infoCurso")
     match(controller:"curso", action:"inicio")
     match(controller:"curso", action:"alta")
     match(controller:"curso", action:"save")
@@ -43,12 +46,39 @@ class SecurityInterceptor {
     match(controller:"curso", action:"modificar")
     match(controller:"curso", action:"seleccionarModify")
     match(controller:"curso", action:"confirmarModify")
-    match(controller:"administrador", action:"inicio")
-    match(controller:"administrador", action:"inscriptosxCurso")
-    match(controller:"administrador", action:"pagoInscriptos")
-    match(controller:"administrador", action:"nopagoInscriptos")
-    match(controller:"administrador", action:"cursosxFecha")
-    
+    match(controller:"estadisticas", action:"inicio")
+    match(controller:"estadisticas", action:"inscriptosxCurso")
+    match(controller:"estadisticas", action:"pagoInscriptos")
+    match(controller:"estadisticas", action:"nopagoInscriptos")
+    match(controller:"estadisticas", action:"cursosxFecha")
+    match(controller:"expositores", action:"inicio")
+    match(controller:"expositores", action:"altaExpositor")
+    match(controller:"expositores", action:"guardarExpositor")
+    match(controller:"expositores", action:"listadoExpositores")
+    match(controller:"expositores", action:"asignarCurso")
+    match(controller:"expositores", action:"quitarCurso")
+    match(controller:"expositores", action:"confirmarQuitar")
+    match(controller:"expositores", action:"guardarCursoExpositor")
+    match(controller:"expositores", action:"modificar")
+    match(controller:"expositores", action:"modificarDatosExp")
+    match(controller:"expositores", action:"guardarDatosModif")
+    match(controller:"expositores", action:"baja")
+    match(controller:"expositores", action:"eliminarExpositor")
+    match(controller:"expositores", action:"confirmarEliminar")
+    match(controller:"autoridadCertificante", action:"inicio")
+    match(controller:"autoridadCertificante", action:"altaAutoridadCertificante")
+    match(controller:"autoridadCertificante", action:"guardarAutoridad")
+    match(controller:"autoridadCertificante", action:"listadoAutoridad")
+    match(controller:"autoridadCertificante", action:"asignarCurso")
+    match(controller:"autoridadCertificante", action:"guardarCursoAutoridad")
+    match(controller:"autoridadCertificante", action:"quitarCurso")
+    match(controller:"autoridadCertificante", action:"confirmarQuitar")
+    match(controller:"autoridadCertificante", action:"modificar")
+    match(controller:"autoridadCertificante", action:"modificarDatosAut")
+    match(controller:"autoridadCertificante", action:"guardarDatosModif")
+    match(controller:"autoridadCertificante", action:"baja")
+    match(controller:"autoridadCertificante", action:"eliminarAutoridad")
+    match(controller:"autoridadCertificante", action:"confirmarEliminar")
   }
 
   boolean before() {
@@ -62,7 +92,7 @@ class SecurityInterceptor {
                  return false   
             }                                        
         }
-        if(controllerName=='administrador' && (actionName=='inicio'||actionName=='cuenta'||actionName=='modify'||actionName=='gestionPago'||actionName=='seleccionarPago'||actionName=='modifyPago'||actionName=='gestionCertificados'||actionName=='seleccionarCertificado'||actionName=='modifyCertif')) {
+        if(controllerName=='administrador' && (actionName=='inicio'||actionName=='cuenta'||actionName=='modify'||actionName=='gestionPago'||actionName=='seleccionarPago'||actionName=='modifyPago'||actionName=='gestionCertificados'||actionName=='seleccionarCertificado'||actionName=='modifyCertif'||actionName=='menuPago'||actionName=='listadoPagos'||actionName=='infoCurso')) {
             if(session.user instanceof Aspirante){
                 redirect(controller:"aspirante", action: "inicio")
                 return false
@@ -74,7 +104,19 @@ class SecurityInterceptor {
                 return false
             }                       
         }
-        if(controllerName=='astadisticas' && (actionName=='inicio' || actionName=='inscriptosxCurso' || actionName=='pagoInscriptos' || actionName=='nopagoInscriptos' ||  actionName=='cursosxFecha')) {
+        if(controllerName=='expositores' && (actionName=='inicio'||actionName=='altaExpositor'||actionName=='guardarExpositor'||actionName=='listadoExpositores'||actionName=='asignarCurso'||actionName=='quitarCurso'||actionName=='confirmarQuitar'||actionName=='guardarCursoExpositor'||actionName=='modificar'||actionName=='modificarDatosExp'||actionName=='guardarDatosModif'||actionName=='baja'||actionName=='eliminarExpositor'||actionName=='confirmarEliminar')) {
+            if(session.user instanceof Aspirante){
+                redirect(controller:"aspirante", action: "inicio")
+                return false
+            }                       
+        }
+        if(controllerName=='autoridadCertificante' && (actionName=='inicio'||actionName=='altaAutoridadCertificante'||actionName=='guardarAutoridad'||actionName=='listadoAutoridad'||actionName=='asignarCurso'||actionName=='guardarCursoAutoridad'||actionName=='quitarCurso'||actionName=='confirmarQuitar'||actionName=='modificar'||actionName=='modificarDatosAut'||actionName=='guardarDatosModif'||actionName=='baja'||actionName=='eliminarAutoridad'||actionName=='confirmarEliminar')) {
+            if(session.user instanceof Aspirante){
+                redirect(controller:"aspirante", action: "inicio")
+                return false
+            }                        
+        }
+        if(controllerName=='estadisticas' && (actionName=='inicio' || actionName=='inscriptosxCurso' || actionName=='pagoInscriptos' || actionName=='nopagoInscriptos' ||  actionName=='cursosxFecha')) {
             if(session.user instanceof Aspirante){
                 redirect(controller:"aspirante", action: "inicio")
                 return false
