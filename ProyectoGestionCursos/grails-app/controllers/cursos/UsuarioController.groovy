@@ -29,7 +29,7 @@ class UsuarioController {
         }
       } 
       else{
-      render(view: "inicio", model: [message: "Usuario no encontrado"])
+      render(view: "inicio", model: [message: "Usuario no encontrado",params: params])
       }
     }
 

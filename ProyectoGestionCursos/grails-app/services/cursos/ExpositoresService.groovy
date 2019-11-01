@@ -22,11 +22,6 @@ class ExpositoresService {
     expositores.removeAll(expsacar)
     return expositores
     }
-    
-  List listadoCursos() {
-    def cursos = Curso.findAll()
-      return cursos
-  }
 
   Expositores expositorxId(Map params){
     return Expositores.get(params.id)

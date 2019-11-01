@@ -18,7 +18,7 @@
                                 <div class="control-group">
                                     <label class="control-label" for="usuario">Usuario</label>
                                         <div class="controls">
-                                            <input id="usuario" name="usuario" type="text" maxlength="60" required onclick="borrarmsj()">
+                                            <input id="usuario" name="usuario" type="text" maxlength="60" value="${params.usuario}"required onclick="borrarmsj()">
                                         </div>
                                 </div>
                                 <div class="control-group">

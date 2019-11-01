@@ -14,7 +14,6 @@ class AdministradorService {
     adm.apellido = params.apellido
     adm.dni = Integer.parseInt(params.dni)
     adm.save(flush:true)
-    def u = Usuario.findById(id)
-    return u
+    return Usuario.findById(id)
   }
 }

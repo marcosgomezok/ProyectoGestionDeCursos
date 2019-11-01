@@ -5,19 +5,10 @@ import grails.gorm.transactions.Transactional
 @Transactional
 class AutoridadCertificanteService {
 
-  void altaAutoridad(Map params) {
-    def autoridad = new AutoridadCertificante(params).save(flush:true)
-  }
-
   void altaAutoridadCertificante(Map params) {
     def file = params.firma
       def img = new AutoridadCertificante(apellido: params.apellido, nombre:params.nombre, dni: params.dni, firma:file, cargo: params.cargo)
       img.save(flush:true)
-      if (img.hasErrors()) {
-            img.errors.allErrors.each {
-                println it
-            }
-      }
   }
 
   AutoridadCertificante autoridadxId(Map params){
@@ -26,10 +17,6 @@ class AutoridadCertificanteService {
 
   List listadoAutoridades() {
     return  AutoridadCertificante.findAll()
-  }
-   List listadoCursos() {
-    def cursos = Curso.findAll()
-      return cursos
   }
 
   List listadoAutoridadesSincurso(Curso curso) {

@@ -13,10 +13,6 @@ class AspiranteService {
     return Aspirante.get(id)
   }
 
-  Aspirante aspirantexUsername(String usuario){
-    return Aspirante.findByUsuario(usuario)
-  }
-
   Usuario modifyAspirante(Map params, Long id){
     def asp = Aspirante.get(id)
     asp.properties = params

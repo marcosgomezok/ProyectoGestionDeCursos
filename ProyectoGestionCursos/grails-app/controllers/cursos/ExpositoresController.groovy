@@ -27,7 +27,7 @@ class ExpositoresController {
     
     def asignarCurso(){
       def expositor = expositoresService.expositorxId(params)
-      def listado= expositoresService.listadoCursos()
+      def listado= cursoService.listadoCursos()
       [expositor:expositor, listado:listado]
     }
 

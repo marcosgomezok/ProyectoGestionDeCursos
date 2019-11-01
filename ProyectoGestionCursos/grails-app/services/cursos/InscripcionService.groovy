@@ -29,21 +29,19 @@ class InscripcionService {
   }
 
   List pago(){
-    def inscripciones = Inscripcion.withCriteria() {           
+    return Inscripcion.withCriteria() {           
       cupon{
         eq("pago", "Realizado")
       }    
     }
-    return inscripciones
   }
 
   List noPago(){
-    def inscripciones = Inscripcion.withCriteria() {           
+    return Inscripcion.withCriteria() {           
       cupon{
         eq("pago", "Pendiente")
       }       
     }
-    return inscripciones
   }
 
   List inscripcionesxCurso(Curso curso){
@@ -72,13 +70,12 @@ class InscripcionService {
    }
 
    List inscripcionespCertificados(){
-     def inscripciones = Inscripcion.withCriteria() {     
+     return Inscripcion.withCriteria() {     
        /*
       curso{
         le("fecha_hasta", new Date())
       }  */       
     }
-    return inscripciones
    }
 
    void bajaInscripcion(Map params){

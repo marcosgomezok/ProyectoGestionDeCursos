@@ -46,7 +46,7 @@
         </g:else>  
             </div>
         <div class="centrar">
-        <g:link controller="Administrador" action="inicio" class="btn btn-success">Volver</g:link>
+        <g:link controller="Administrador" action="menuPago" class="btn btn-success">Volver</g:link>
         </div>
     </div>
 </div>

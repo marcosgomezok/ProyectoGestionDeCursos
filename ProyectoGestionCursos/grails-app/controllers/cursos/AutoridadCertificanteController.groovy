@@ -6,6 +6,7 @@ import static org.springframework.http.HttpStatus.*
 class AutoridadCertificanteController {
 
     def autoridadCertificanteService
+    def cursoService
 
     def inicio(){
       render(view:"inicio")
@@ -35,7 +36,7 @@ class AutoridadCertificanteController {
 
     def asignarCurso(){
       def autoridad = autoridadCertificanteService.autoridadxId(params)
-      def listado= autoridadCertificanteService.listadoCursos()
+      def listado= cursoService.listadoCursos()
       [autoridad:autoridad, listado:listado]
     }
 

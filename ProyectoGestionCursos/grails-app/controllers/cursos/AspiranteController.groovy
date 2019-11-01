@@ -17,7 +17,7 @@ class AspiranteController {
 
     def save() {
       if(params.usuario != null){   
-      def asp = aspiranteService.aspirantexUsername(params.usuario)
+      def asp = usuarioService.usuarioxUser(params.usuario)
         if(asp){
           chain(action: "alta", model:[params: params])
           flash.message = "Nombre de usuario en uso"

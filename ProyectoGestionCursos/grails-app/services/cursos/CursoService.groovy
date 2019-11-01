@@ -5,19 +5,6 @@ import grails.gorm.transactions.Transactional
 @Transactional
 class CursoService {
 
-  List buscarCurso(int id) {
-          return Curso.findAllById(params.id)
-    }
-
-    void borrarExpositoresCursos(int id) {
-        def curso = Curso.get(id)
-        curso.exp.collect().each { Expositores exp ->
-            curso.removeFromExp(exp)
-            curso.delete(flush:true)
-        }
-    }
-
-  /*NO TOCAR LOS SERVICIOS DE ABAJO*/
   List cursosxFechas(Map params){
     def fechaD = new Date().parse('yyyy-MM-dd', params.fecha_desde)
     def fechaH = new Date().parse('yyyy-MM-dd', params.fecha_hasta)
@@ -63,15 +50,29 @@ class CursoService {
     def curso = Curso.get(c.id)
     def auto
     def exp
-    params.aut.each{
-      auto = AutoridadCertificante.get(it)
+    if(params.aut instanceof String){
+      auto = AutoridadCertificante.get(params.aut)
       auto.addToCursos(curso).save(flush: true)
       curso.addToAut(auto).save(flush: true)
     }
-    params.exp.each{
+    else{
+      params.aut.each{
+      auto = AutoridadCertificante.get(it)
+      auto.addToCursos(curso).save(flush: true)
+      curso.addToAut(auto).save(flush: true)
+      }
+    }
+    if(params.exp instanceof String){
+      exp = Expositores.get(params.exp)
+      exp.addToCursos(curso).save(flush: true)
+      curso.addToExp(exp).save(flush: true)
+    }
+    else{
+      params.exp.each{
       exp = Expositores.get(it)
       exp.addToCursos(curso).save(flush: true)
       curso.addToExp(exp).save(flush: true)
+      }
     }
   }
 
@@ -105,16 +106,30 @@ class CursoService {
     curso.removeFromAut(aut).save(flush: true)
     aut.removeFromCursos(curso).save(flush: true)
     }
-
-    params.aut.each{
-      auto = AutoridadCertificante.get(it)
+  
+    if(params.aut instanceof String){
+      auto = AutoridadCertificante.get(params.aut)
       auto.addToCursos(curso).save(flush: true)
       curso.addToAut(auto).save(flush: true)
     }
-    params.exp.each{
+    else{
+      params.aut.collect().each{
+      auto = AutoridadCertificante.get(it)
+      auto.addToCursos(curso).save(flush: true)
+      curso.addToAut(auto).save(flush: true)
+      }
+    }
+    if(params.exp instanceof String){
+      exp = Expositores.get(params.exp)
+      exp.addToCursos(curso).save(flush: true)
+      curso.addToExp(exp).save(flush: true)
+    }
+    else{
+      params.exp.each{
       exp = Expositores.get(it)
       exp.addToCursos(curso).save(flush: true)
       curso.addToExp(exp).save(flush: true)
+      }
     }
   }
 }

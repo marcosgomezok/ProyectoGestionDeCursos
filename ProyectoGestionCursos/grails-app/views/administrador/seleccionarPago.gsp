@@ -22,7 +22,7 @@
       </div>
       <div class="centrar">
         <button type="submit" class="btn btn-success">Confirmar pago</button>
-        <g:link controller="Administrador" action="inicio" class="btn btn-success">Cancelar</g:link>
+        <g:link controller="Administrador" action="gestionPago" class="btn btn-success">Cancelar</g:link>
       </div>                                       
     </g:form>
 </div>
