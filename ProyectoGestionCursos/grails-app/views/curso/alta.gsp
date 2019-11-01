@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta name="layout" content="main_selectmultiple"/>
+    <asset:javascript src="validarCampos.js"/>
     <title>Alta</title>
 </head>
 <body>
@@ -64,13 +65,13 @@
         <div class="form-group row">
             <label for="cupo_minimo" class="col-sm-2 col-form-label">Cupo minimo</label>
                 <div class="col-sm-10">
-                    <input type="number" class="form-control" id="cupo_minimo" name="cupo_minimo" required>
+                    <input type="number" class="form-control" id="cupo_minimo" name="cupo_minimo" onchange="validarcupos()" required>
                 </div>
         </div>
         <div class="form-group row">
             <label for="cupo_maximo" class="col-sm-2 col-form-label">Cupo maximo</label>
                 <div class="col-sm-10">
-                    <input type="number" class="form-control" id="cupo_maximo" name="cupo_maximo" required>
+                    <input type="number" class="form-control" id="cupo_maximo" name="cupo_maximo" onchange="validarcupos()" required>
                 </div>
         </div>
         <div class="form-group row">

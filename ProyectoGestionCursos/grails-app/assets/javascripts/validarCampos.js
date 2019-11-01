@@ -9,6 +9,19 @@ function clavescheck(){
     }
 }
 
+function validarcupos(){
+    var min = document.getElementById('cupo_minimo').value
+    var max = document.getElementById('cupo_maximo').value
+    if(min != "" &&  max != "")
+    {
+        if(parseInt(max)<parseInt(min))
+            {
+                alert("El cupo maximo debe ser mayor que cupo minimo")
+            }   
+    }
+    
+}
+
 
 function borrarmsj(){
     document.getElementById("msj").innerHTML = "";
@@ -16,8 +29,8 @@ function borrarmsj(){
 
 /*
 function corchetes(){
-var str = document.getElementById("curso").innerHTML;
+var str = document.getElementById("expositores").innerHTML;
 var res = str.replace("[","").replace("]","");
-document.getElementById("curso").innerHTML = res;
+document.getElementById("expostirores").innerHTML = res;
 }
 */
