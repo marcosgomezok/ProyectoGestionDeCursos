@@ -23,13 +23,13 @@
         <div class="form-group row">
             <label for="fecha_desde" class="col-sm-2 col-form-label">Fecha inicio</label>
                 <div class="col-sm-10">
-                    <input type="date" class="form-control" id="fecha_desde" name="fecha_desde" required>
+                    <input type="date" class="form-control" id="fecha_desde" name="fecha_desde" onchange="validarfechas()"required>
                 </div>
         </div>
         <div class="form-group row">
             <label for="fecha_hasta" class="col-sm-2 col-form-label">Fecha fin</label>
                 <div class="col-sm-10">
-                    <input type="date" class="form-control" id="fecha_hasta" name="fecha_hasta" required>
+                    <input type="date" class="form-control" id="fecha_hasta" name="fecha_hasta" onchange="validarfechas()" required>
                 </div>
         </div>
         <div class="form-group row">
@@ -53,13 +53,13 @@
         <div class="form-group row">
             <label for="fecha_lim_inscrip" class="col-sm-2 col-form-label">Fecha límite Ins.</label>
                 <div class="col-sm-10">
-                    <input type="date" class="form-control" id="fecha_lim_inscrip" name="fecha_lim_inscrip" required>
+                    <input type="date" class="form-control" id="fecha_lim_inscrip" name="fecha_lim_inscrip" onchange="validarfechas()" required>
                 </div>
         </div>
         <div class="form-group row">
             <label for="fechadel_certificado" class="col-sm-2 col-form-label">Fecha certificado</label>
                 <div class="col-sm-10">
-                    <input type="date" class="form-control" id="fechadel_certificado" name="fechadel_certificado" required>
+                    <input type="date" class="form-control" id="fechadel_certificado" name="fechadel_certificado" onchange="validarfechas()"required>
                 </div>
         </div>
         <div class="form-group row">

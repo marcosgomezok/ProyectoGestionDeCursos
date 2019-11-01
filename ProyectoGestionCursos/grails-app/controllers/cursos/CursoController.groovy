@@ -24,7 +24,7 @@ class CursoController extends RestfulController<Curso>{
     }
 
     def save() {
-      if(params==null){   
+      if(params.nombre==null){   
         redirect(controller:"Administrador",action:"inicio")
       }
       else{
